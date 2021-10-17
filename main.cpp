@@ -1,45 +1,54 @@
 #include <SFML/Graphics.hpp>
-#include "Block.h"
+#include "GraphicsManager.h"
 using namespace std;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(700, 900), "Tetris 1945");
-
-    sf::Texture texture;
-    if (!texture.loadFromFile("Img/TextureTetris.png"))
-    {
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Tetris 1945", sf::Style::Titlebar | sf::Style::Close);
+    window.setKeyRepeatEnabled(false);
+    GraphicsManager gManager;
+    sf::Texture texture,background;
+    if (!background.loadFromFile("Img/Background.png"))
         return -1;
-    }
-    vector<Block *> tetromino(4);
-    Block b(0,0, &texture);
-    tetromino[0]=&b;
+    if (!texture.loadFromFile("Img/TextureTetris.png"))
+        return -1;
+
+    gManager.background.setTexture(background);
+    gManager.background.setScale(sf::Vector2f(0.5,0.5));
+
+    gManager.tetromino->sprite.setTexture(texture);
 
     while (window.isOpen())
-    {
+    {          
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-        if(tetromino[0]->getY()<600)
-            tetromino[0]->setY(tetromino[0]->getY() + 0.1);
-        else {
-            tetromino[0]->setY(0);
-            tetromino[0]->changeTexture(rand()%5);
-        }
+            switch (event.type)
+            {
+                case sf::Event::Closed:
+                    window.close();
+                    break;
 
+                    // touche pressée
+                case sf::Event::KeyPressed:
+                    switch (event.key.code) {
+                        case sf::Keyboard::D:
+                            gManager.tetromino->setX(gManager.tetromino->getX() + Block::TEXTURE_SIZE);
+                            break;
+                        case sf::Keyboard::Q:
+                            gManager.tetromino->setX(gManager.tetromino->getX() - Block::TEXTURE_SIZE);
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
 
-        window.clear();
-        for (int i = 0; i < 4; i++) {
-            tetromino[0]->setX((Block::TEXTURE_SIZE)*i);
-            window.draw(tetromino[0]->getSprite());
+                default:
+                    break;
+            }
         }
+        gManager.Render(&window);
         
-
-
-        window.display();
     }
 
     return 0;

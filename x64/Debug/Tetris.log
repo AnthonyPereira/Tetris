@@ -1,2 +1,16 @@
-﻿  main.cpp
+﻿  Block.cpp
+D:\Cours\MASTER 2\tetris-bp\Block.cpp(16,18): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+D:\Cours\MASTER 2\tetris-bp\Block.cpp(20,18): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+  GraphicsManager.cpp
+D:\Cours\MASTER 2\tetris-bp\GraphicsManager.cpp(27,11): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+  main.cpp
+  Génération de code en cours...
   Tetris.vcxproj -> D:\Cours\MASTER 2\tetris-bp\x64\Debug\Tetris.exe

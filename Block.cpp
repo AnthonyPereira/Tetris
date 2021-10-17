@@ -4,14 +4,14 @@
 
 using namespace std;
 
-Block::Block(double x, double y,sf::Texture *t) {
-			coordinates.x = x;
-			coordinates.y = y;
-			sprite.setScale(sf::Vector2f(FACTOR, FACTOR));
+Block::Block() {
+		coordinates.x = 0;
+		coordinates.y = 0;
 
-			sprite.setTexture(*t);
-			sprite.setTextureRect(rectangle);
-		}
+		sprite.setTextureRect(rectangle);
+		sprite.setScale(sf::Vector2f(FACTOR, FACTOR));
+
+}
 void Block::setX(double x) {
 	coordinates.x = x;
 	sprite.setPosition(coordinates);
@@ -30,9 +30,6 @@ double Block::getY() const {
 	return coordinates.y;
 };
 
-sf::Sprite Block::getSprite() const {
-	return sprite;
-};
 
 void Block::changeTexture(int n){
 	rectangle.left = 512*n;
@@ -41,4 +38,4 @@ void Block::changeTexture(int n){
 
 
 
-const float Block::FACTOR = 0.125f;
+const float Block::FACTOR = 0.0625f;
