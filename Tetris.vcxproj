@@ -165,6 +165,8 @@
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsHeaderUnit</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsHeaderUnit</CompileAs>
     </ClCompile>
+    <ClCompile Include="Piece.cpp" />
+    <ClCompile Include="Plateau.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Img\TextureTetris.png">
@@ -177,6 +179,8 @@
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
     <ClInclude Include="Block.h" />
+    <ClInclude Include="Piece.h" />
+    <ClInclude Include="Plateau.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

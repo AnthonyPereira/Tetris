@@ -1,35 +1,44 @@
 #include <SFML/Graphics.hpp>
-#include "Block.h"
+#include <stdio.h>
+#include "Piece.h"
+#include "Plateau.h"
+
 using namespace std;
 
-int main()
-{
-    sf::RenderWindow window(sf::VideoMode(700, 900), "Tetris 1945");
+void affichePiece(Piece* piece) {
+	for (int i = 0; i < 4; ++i) {
+		for (int j = 0; j < 3; ++j) {
+			printf("%d ", piece->compoPiece[i][j]);
+		}
+		printf("\n");
+	}
+}
 
-    sf::Texture texture;
-    if (!texture.loadFromFile("Img/TextureTetris.png", sf::IntRect(0, 0, 512,512)))
-    {
-        return -1;
-    }
-    vector<Block *> tetromino(5);
-    Block b(0,0, &texture);
-    tetromino[0]=&b;
+void affichePlateau(Plateau* plateau) {
+	for (int i = 0; i < plateau->nbLine; ++i) {
+		for (int j = 0; j < plateau->nbCol; ++j) {
+			printf("%d ", plateau->plateau[i][j]);
+		}
+		printf("\n");
+	}
+}
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(tetromino[0]->getSprite());
-        
-
-        window.display();
-    }
-
-    return 0;
+int main(){
+	Piece* piece = new Piece(3);
+	piece->replacePiece(2, 3);
+	affichePiece(piece);
+	Plateau* plateau = new Plateau(5, 5);
+	plateau->addPiece(piece);
+	printf("\n");
+	affichePlateau(plateau);
+	printf("\n");
+	plateau->plateau[0][0] = 2;
+	plateau->plateau[0][1] = 2;
+	plateau->plateau[0][2] = 2;
+	plateau->plateau[0][3] = 2;
+	plateau->plateau[0][4] = 2;
+	affichePlateau(plateau);
+	printf("\n");
+	plateau->DelLinePlateau();
+	affichePlateau(plateau);
 }
