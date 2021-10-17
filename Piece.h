@@ -12,8 +12,8 @@ public:
 	Piece(int mid);
 	void replacePiece (int color,int piece);
 	/*void turnLeft();
-	void turnRight();
+	void turnRight();*/
 	void goDown();
 	void goLeft();
-	void goRight();*/
+	void goRight();
 };

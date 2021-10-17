@@ -102,6 +102,27 @@ void Piece::replacePiece(int color, int piece){
 		}
 }
 
+void Piece::goDown(){
+	compoPiece[0][1]++;
+	compoPiece[1][1]++;
+	compoPiece[2][1]++;
+	compoPiece[3][1]++;
+}
+
+void Piece::goLeft(){
+	compoPiece[0][0]--;
+	compoPiece[1][0]--;
+	compoPiece[2][0]--;
+	compoPiece[3][0]--;
+}
+
+void Piece::goRight(){
+	compoPiece[0][0]++;
+	compoPiece[1][0]++;
+	compoPiece[2][0]++;
+	compoPiece[3][0]++;
+}
+
 
 /*
 void Piece::replacePiece(int* color, int* piece){

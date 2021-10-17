@@ -42,3 +42,11 @@ void Plateau::DelLinePlateau(){
 	}
 }
 
+void Plateau::clear() {
+	for (int i = 0; i < nbLine; ++i) {
+		for (int j = 0; j < nbCol; ++j) {
+			plateau[i][j] = 0;
+		}
+	}
+}
+

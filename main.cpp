@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "Piece.h"
 #include "Plateau.h"
+#include "integrityPlateau.h"
 
 using namespace std;
 
@@ -24,21 +25,26 @@ void affichePlateau(Plateau* plateau) {
 }
 
 int main(){
-	Piece* piece = new Piece(3);
+	Piece* piece = new Piece(1);
 	piece->replacePiece(2, 3);
 	affichePiece(piece);
 	Plateau* plateau = new Plateau(5, 5);
 	plateau->addPiece(piece);
 	printf("\n");
 	affichePlateau(plateau);
-	printf("\n");
-	plateau->plateau[0][0] = 2;
-	plateau->plateau[0][1] = 2;
-	plateau->plateau[0][2] = 2;
-	plateau->plateau[0][3] = 2;
-	plateau->plateau[0][4] = 2;
-	affichePlateau(plateau);
-	printf("\n");
-	plateau->DelLinePlateau();
-	affichePlateau(plateau);
+	for (int i = 0; i < 5; ++i) {
+		plateau->clear();
+		if (down(plateau, piece)) {
+			piece->goDown();
+			plateau->addPiece(piece);
+			printf("\n");
+			affichePlateau(plateau);
+		}
+		else {
+			printf("impossible \n");
+		}
+		
+	}
+	
+	
 }

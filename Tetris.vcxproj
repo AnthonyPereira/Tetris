@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="GraphicsManager.cpp" />
+    <ClCompile Include="integrityPlateau.cpp" />
     <ClCompile Include="main.cpp">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsHeaderUnit</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsHeaderUnit</CompileAs>
@@ -179,6 +180,7 @@
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
     <ClInclude Include="Block.h" />
+    <ClInclude Include="integrityPlateau.h" />
     <ClInclude Include="Piece.h" />
     <ClInclude Include="Plateau.h" />
   </ItemGroup>
