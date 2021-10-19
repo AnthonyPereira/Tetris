@@ -5,7 +5,7 @@
 using namespace std;
 
 Block::Block() {
-		coordinates.x = 0;
+		coordinates.x = 400;
 		coordinates.y = 0;
 
 		sprite.setTextureRect(rectangle);
