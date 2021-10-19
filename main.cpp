@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "GraphicsManager.h"
+#include "MouvManager.h"
 using namespace std;
 
 int main()
@@ -7,6 +8,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1280, 720), "Tetris 1945", sf::Style::Titlebar | sf::Style::Close);
     window.setKeyRepeatEnabled(false);
     GraphicsManager gManager;
+    
     sf::Texture texture,background;
     if (!background.loadFromFile("Img/Background.png"))
         return -1;
