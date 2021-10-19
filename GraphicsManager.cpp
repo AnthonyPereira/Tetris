@@ -10,7 +10,6 @@ using namespace std;
 
 GraphicsManager::GraphicsManager() {
     tetromino = new Block();
-
 };
 
 

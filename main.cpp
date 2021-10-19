@@ -47,6 +47,9 @@ int main()
                     break;
             }
         }
+
+
+
         gManager.Render(&window);
         
     }
