@@ -7,7 +7,7 @@ Piece::Piece(int mid) {
 		}
 	}
 	this->mid = mid;
-	piece = 1;
+	piece = -1;
 	color = 0;
 }
 
