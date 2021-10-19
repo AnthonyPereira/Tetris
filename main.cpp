@@ -8,7 +8,7 @@ using namespace std;
 
 void affichePiece(Piece* piece) {
 	for (int i = 0; i < 4; ++i) {
-		for (int j = 0; j < 3; ++j) {
+		for (int j = 0; j < 2; ++j) {
 			printf("%d ", piece->compoPiece[i][j]);
 		}
 		printf("\n");
@@ -25,14 +25,14 @@ void affichePlateau(Plateau* plateau) {
 }
 
 int main(){
-	Piece* piece = new Piece(1);
-	piece->replacePiece(2, 3);
+	Piece* piece = new Piece(4);
+	piece->replacePiece(2, 1);
 	affichePiece(piece);
-	Plateau* plateau = new Plateau(5, 5);
+	Plateau* plateau = new Plateau(20, 10);
 	plateau->addPiece(piece);
 	printf("\n");
 	affichePlateau(plateau);
-	for (int i = 0; i < 5; ++i) {
+	for (int i = 0; i < 25; ++i) {
 		plateau->clear();
 		if (down(plateau, piece)) {
 			piece->goDown();

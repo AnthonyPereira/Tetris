@@ -12,6 +12,7 @@ public:
 
 	Plateau(int nbLine, int nbCol);
 	void addPiece(Piece* newPiece);
+	bool lineEmpty(int line);
 	void DelLinePlateau();
 	void clear();
 	

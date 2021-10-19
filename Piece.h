@@ -6,8 +6,9 @@ class Piece {
 
 public:
 	int mid;
-	int compoPiece[4][3];
+	int compoPiece[4][2];
 	int piece;
+	int color;
 
 	Piece(int mid);
 	void replacePiece (int color,int piece);

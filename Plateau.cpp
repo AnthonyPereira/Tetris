@@ -13,10 +13,10 @@ Plateau::Plateau(int nbLine, int nbCol){
 }
 
 void Plateau::addPiece(Piece* newPiece){
-	plateau[newPiece->compoPiece[0][1]][newPiece->compoPiece[0][0]] = newPiece->compoPiece[0][2];
-	plateau[newPiece->compoPiece[1][1]][newPiece->compoPiece[1][0]] = newPiece->compoPiece[0][2];
-	plateau[newPiece->compoPiece[2][1]][newPiece->compoPiece[2][0]] = newPiece->compoPiece[0][2];
-	plateau[newPiece->compoPiece[3][1]][newPiece->compoPiece[3][0]] = newPiece->compoPiece[0][2];
+	plateau[newPiece->compoPiece[0][1]][newPiece->compoPiece[0][0]] = newPiece->color;
+	plateau[newPiece->compoPiece[1][1]][newPiece->compoPiece[1][0]] = newPiece->color;
+	plateau[newPiece->compoPiece[2][1]][newPiece->compoPiece[2][0]] = newPiece->color;
+	plateau[newPiece->compoPiece[3][1]][newPiece->compoPiece[3][0]] = newPiece->color;
 }
 
 void Plateau::DelLinePlateau(){
