@@ -6,7 +6,7 @@ using namespace std;
 
 Block::Block() {
 		coordinates.x = 400;
-		coordinates.y = 0;
+		coordinates.y = 50;
 
 		sprite.setTextureRect(rectangle);
 		sprite.setScale(sf::Vector2f(FACTOR, FACTOR));

@@ -1,22 +1,4 @@
-﻿  Block.cpp
-D:\M2\tetris-bp\Block.cpp(16,18): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-D:\M2\tetris-bp\Block.cpp(20,18): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-  GraphicsManager.cpp
-D:\M2\tetris-bp\GraphicsManager.cpp(31,11): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
-D:\M2\tetris-bp\GraphicsManager.cpp(32,11): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
-  integrityPlateau.cpp
+﻿  integrityPlateau.cpp
   main.cpp
-  MouvManager.cpp
-  Piece.cpp
-  Plateau.cpp
   Génération de code en cours...
-  LINK : D:\M2\tetris-bp\x64\Debug\Tetris.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
   Tetris.vcxproj -> D:\M2\tetris-bp\x64\Debug\Tetris.exe

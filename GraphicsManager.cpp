@@ -5,6 +5,8 @@
 using namespace std;
 
 #include "GraphicsManager.h"
+#include "MouvManager.h"
+
 #include "Block.h"
 
 
@@ -13,32 +15,21 @@ GraphicsManager::GraphicsManager() {
 };
 
 
-int GraphicsManager::Render(sf::RenderWindow* window) {
-    if (tetromino->getY() < 650)
-        tetromino->setY(tetromino->getY() + 0.3);
-    else {
-        tetromino->setY(0);
-        tetromino->changeTexture(rand() % 5);
-    }
-    int compoPiece[4][3] = { {0,1},
-                             {1,1},
-                             {1,0},
-                             {2,0}};
+int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager) {
+   
 
 
     window->clear();    //verifier si on peut clear uniquement les blocks
     window->draw(background);
-    int X = tetromino->getX();
-    int Y = tetromino->getY();
+    window->draw(*plate);
+    tetromino->setX(mManager->currentPiece->mid);
 
-    for (int* i : compoPiece) {
-        tetromino->setX(i[0] * Block::TEXTURE_SIZE);
-        tetromino->setY(i[1] * Block::TEXTURE_SIZE);
+    for (int* i : mManager->currentPiece->compoPiece) {
+        tetromino->setX(512+i[0] * Block::TEXTURE_SIZE);
+        tetromino->setY(50+i[1] * Block::TEXTURE_SIZE);
 
         window->draw(tetromino->sprite);
     }
-    tetromino->setX(X);
-    tetromino->setY(Y);
 
     window->display();
     return 1;
