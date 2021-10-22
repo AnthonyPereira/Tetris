@@ -9,7 +9,6 @@ public:
 	int compoPiece[4][2];
 	int piece;
 	int color;
-	int rota;
 
 	Piece(int mid);
 	void replacePiece (int color,int piece);
@@ -18,4 +17,5 @@ public:
 	void goDown();
 	void goLeft();
 	void goRight();
+	Piece& operator =(const Piece& p2);
 };

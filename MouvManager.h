@@ -15,7 +15,6 @@ class MouvManager {
 		void goLeft();
 		void goRight();
 		void goDown();
-
 		void turnLeft();
 
 };

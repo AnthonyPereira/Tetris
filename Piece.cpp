@@ -9,14 +9,12 @@ Piece::Piece(int mid) {
 	this->mid = mid;
 	piece = -1;
 	color = 0;
-	rota = 0;
 }
 
 
 void Piece::replacePiece(int color, int piece){
 	this->piece = piece;
 	this->color = color;
-	this->rota = 0;
 	compoPiece[0][0] = mid;
 	compoPiece[0][1] = 1;
 		if (piece == 1) {
@@ -177,6 +175,19 @@ void Piece::goRight(){
 	compoPiece[2][0]++;
 	compoPiece[3][0]++;
 }
+
+Piece& Piece::operator=(const Piece& p2){
+	this->color = p2.color;
+	for (int i = 0; i < 4; ++i) {
+		for (int j = 0; j < 2; ++j) {
+			this->compoPiece[i][j] = p2.compoPiece[i][j];
+		}
+	}
+
+	this->piece = p2.piece;
+	return *this;
+}
+
 
 
 /*

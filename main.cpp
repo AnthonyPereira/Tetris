@@ -44,6 +44,7 @@ int main()
         if(!delta) {
             delta = 200;
             mManager.goDown();
+            mManager.turnLeft();
     
         }
     }
