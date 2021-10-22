@@ -9,7 +9,7 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(1280, 720), "Tetris 1945", sf::Style::Titlebar | sf::Style::Close);
     window.setKeyRepeatEnabled(false);
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(200);
     GraphicsManager gManager;
     EventsManager eManager;
     MouvManager mManager(5,20,10);
@@ -29,7 +29,7 @@ int main()
     gManager.plate = &r;
 
     gManager.tetromino->sprite.setTexture(texture);
-    int delta=60;
+    int delta=200;
     while (window.isOpen())
     {          
         sf::Event event;
@@ -42,8 +42,9 @@ int main()
         gManager.Render(&window,&mManager);
         delta--;
         if(!delta) {
-            delta = 60;
+            delta = 200;
             mManager.goDown();
+            mManager.turnLeft();
     
         }
     }

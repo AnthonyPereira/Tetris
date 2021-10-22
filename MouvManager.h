@@ -12,9 +12,10 @@ class MouvManager {
 
 		MouvManager(int mid, int line, int col);
 
-		void Init();
-
 		void goLeft();
 		void goRight();
 		void goDown();
+
+		void turnLeft();
+
 };
