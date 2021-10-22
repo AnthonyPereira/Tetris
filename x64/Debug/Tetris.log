@@ -1,8 +1,19 @@
-<<<<<<< HEAD
-﻿  integrityPlateau.cpp
+﻿  Block.cpp
+C:\Users\antho\source\repos\tetris\Block.cpp(16,18): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\antho\source\repos\tetris\Block.cpp(20,18): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+  EventsManager.cpp
+  GraphicsManager.cpp
+C:\Users\antho\source\repos\tetris\GraphicsManager.cpp(31,11): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+C:\Users\antho\source\repos\tetris\GraphicsManager.cpp(32,11): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
   main.cpp
   Génération de code en cours...
-  Tetris.vcxproj -> D:\M2\tetris-bp\x64\Debug\Tetris.exe
-=======
-﻿  Tetris.vcxproj -> C:\Users\antho\source\repos\tetris\x64\Debug\Tetris.exe
->>>>>>> rebase
+  LINK : C:\Users\antho\source\repos\tetris\x64\Debug\Tetris.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
+  Tetris.vcxproj -> C:\Users\antho\source\repos\tetris\x64\Debug\Tetris.exe
