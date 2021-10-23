@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "GraphicsManager.h"
 #include "MouvManager.h"
 #include "EventsManager.h"
@@ -9,7 +10,7 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(1280, 720), "Tetris 1945", sf::Style::Titlebar | sf::Style::Close);
     window.setKeyRepeatEnabled(false);
-    window.setFramerateLimit(200);
+    window.setFramerateLimit(60);
     GraphicsManager gManager;
     EventsManager eManager;
     MouvManager mManager(5,20,10);
@@ -27,25 +28,29 @@ int main()
     r.setPosition(512, 50);
 
     gManager.plate = &r;
-
+    gManager.blockplateau->sprite.setTexture(texture);
     gManager.tetromino->sprite.setTexture(texture);
-    int delta=200;
+    sf::Clock c;
+
     while (window.isOpen())
     {          
         sf::Event event;
         while (window.pollEvent(event))
         {
+            gManager.Render(&window, &mManager);
             eManager.analyseEvent(&event,&mManager,&window);
         }
+        sf::Time time = c.getElapsedTime();
+        //cout << time.asSeconds() << endl;
 
-        
-        gManager.Render(&window,&mManager);
-        delta--;
-        if(!delta) {
-            delta = 200;
+        if(time.asSeconds()>1) {
+            gManager.Render(&window, &mManager);
+            cout << mManager.currentPiece->piece <<endl;
             mManager.goDown();
-    
+            c.restart();
+
         }
+
     }
 
     return 0;

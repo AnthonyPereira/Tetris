@@ -12,6 +12,8 @@ class GraphicsManager
 	public:
 		int Render(sf::RenderWindow* window, MouvManager* mManager);
 		Block* tetromino;
+		Block* blockplateau;
+
 		sf::Sprite background;
 		sf::RectangleShape *plate;
 
