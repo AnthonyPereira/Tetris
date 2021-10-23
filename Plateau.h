@@ -14,6 +14,7 @@ public:
 	void addPiece(Piece* newPiece);
 	bool lineEmpty(int line);
 	void DelLinePlateau();
+	void downPlateau();
 	void clear();
 	
 };

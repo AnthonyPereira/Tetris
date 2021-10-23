@@ -9,7 +9,7 @@ using namespace std;
 MouvManager::MouvManager(int mid, int line, int col){
 	currentPiece = new Piece(mid);
 	nextPiece = new Piece(mid);
-	currentPiece->replacePiece((rand() % NBCOLOR)+1, (rand() % NBPIECE)+1);
+	currentPiece->replacePiece((rand() % NBCOLOR)+1, 3);
 	nextPiece->replacePiece((rand() % NBCOLOR) + 1, (rand() % NBPIECE)+1);
 	plateau = new Plateau(line, col);
 }

@@ -49,14 +49,20 @@ void Plateau::DelLinePlateau(){
 			}
 		}
 	}
-	bool precEmpty = lineEmpty(nbLine-1);
+	downPlateau();
+}
+
+void Plateau::downPlateau(){
+	bool precEmpty = lineEmpty(nbLine - 1);
 	bool currentEmpty;
-	for (int i = nbLine-2; i >= 0; --i) {
+	for (int i = nbLine - 2; i >= 0; --i) {
 		currentEmpty = lineEmpty(i);
 		if (precEmpty && !currentEmpty) {
-			std::swap(plateau[i+1], plateau[i]);
+			std::swap(plateau[i + 1], plateau[i]);
 		}
-		precEmpty = currentEmpty;
+		else {
+			precEmpty = currentEmpty;
+		}
 	}
 }
 

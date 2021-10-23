@@ -45,7 +45,7 @@ int main()
 
         if(time.asSeconds()>1) {
             gManager.Render(&window, &mManager);
-            cout << mManager.currentPiece->piece <<endl;
+            //cout << mManager.currentPiece->piece <<endl;
             mManager.goDown();
             c.restart();
 
