@@ -13,8 +13,9 @@ public:
 	Plateau(int nbLine, int nbCol);
 	void addPiece(Piece* newPiece);
 	bool lineEmpty(int line);
-	void DelLinePlateau();
+	int DelLinePlateau();
 	void downPlateau();
+	bool verifLose();
 	void clear();
 	
 };

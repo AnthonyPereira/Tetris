@@ -14,6 +14,7 @@ MouvManager::MouvManager(int mid, int line, int col){
 	currentPiece->replacePiece((rand() % NBCOLOR)+1, (rand() % NBPIECE) + 1);
 	nextPiece->replacePiece((rand() % NBCOLOR) + 1, (rand() % NBPIECE)+1);
 	plateau = new Plateau(line, col);
+	points = 0;
 }
 
 
@@ -41,7 +42,7 @@ void MouvManager::goDown(){
 		nextPiece->replacePiece((rand() % NBCOLOR)+1, (rand() % NBPIECE)+1);
 		cout << currentPiece->piece << endl;
 	}
-	plateau->DelLinePlateau();
+	points += (plateau->DelLinePlateau()*plateau->nbCol*10);
 
 }
 
@@ -50,4 +51,10 @@ void MouvManager::turnLeft(){
 		currentPiece->turnLeft();
 	}
 }
+
+bool MouvManager::verifLose(){
+	return plateau->verifLose();
+}
+
+
 

@@ -9,6 +9,7 @@ class MouvManager {
 		Piece* currentPiece;
 		Piece* nextPiece;
 		Plateau* plateau;
+		int points;
 
 		MouvManager(int mid, int line, int col);
 
@@ -16,5 +17,6 @@ class MouvManager {
 		void goRight();
 		void goDown();
 		void turnLeft();
+		bool verifLose();
 
 };
