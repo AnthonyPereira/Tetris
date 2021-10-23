@@ -1,7 +1,7 @@
 #pragma once
 #include "Piece.h"
 #include <stdio.h>
-
+#include <algorithm>
 
 class Plateau {
 public:
@@ -12,7 +12,7 @@ public:
 
 	Plateau(int nbLine, int nbCol);
 	void addPiece(Piece* newPiece);
-	/*bool lineEmpty(int line);*/
+	bool lineEmpty(int line);
 	void DelLinePlateau();
 	void clear();
 	
