@@ -1,5 +1,6 @@
 #include "Plateau.h"
 
+
 Plateau::Plateau(int nbLine, int nbCol){
 	this->nbLine = nbLine;
 	this->nbCol = nbCol;
@@ -17,6 +18,15 @@ void Plateau::addPiece(Piece* newPiece){
 	plateau[newPiece->compoPiece[1][1]][newPiece->compoPiece[1][0]] = newPiece->color;
 	plateau[newPiece->compoPiece[2][1]][newPiece->compoPiece[2][0]] = newPiece->color;
 	plateau[newPiece->compoPiece[3][1]][newPiece->compoPiece[3][0]] = newPiece->color;
+}
+
+bool Plateau::lineEmpty(int line){
+	for (int i = 0; i < nbCol; ++i) {
+		if (plateau[line][i] != 0) {
+			return false;
+		}
+	}
+	return true;
 }
 
 void Plateau::DelLinePlateau(){
@@ -39,6 +49,15 @@ void Plateau::DelLinePlateau(){
 				plateau[i][j] = 0;
 			}
 		}
+	}
+	bool precEmpty = lineEmpty(nbLine-1);
+	bool currentEmpty;
+	for (int i = nbLine-2; i >= 0; --i) {
+		currentEmpty = lineEmpty(i);
+		if (precEmpty && !currentEmpty) {
+			std::swap(plateau[i+1], plateau[i]);
+		}
+		precEmpty = currentEmpty;
 	}
 }
 
