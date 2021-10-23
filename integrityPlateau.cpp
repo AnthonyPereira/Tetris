@@ -34,6 +34,17 @@ bool down(Plateau* plateau, Piece* piece){
 }
 
 bool verifTurnLeft(Plateau* plateau, Piece* piece){
+	if (piece->piece == 3) {
+		if (piece->compoPiece[1][0] == piece->compoPiece[0][0] + 2 && piece->compoPiece[1][1] < 2) {
+			return false;
+		}
+		else if (piece->compoPiece[1][1] == piece->compoPiece[0][1] + 2 && piece->compoPiece[1][0] > plateau->nbCol-2) {
+			return false;
+		}
+		else if (piece->compoPiece[1][1] == piece->compoPiece[0][1] - 2 && piece->compoPiece[1][0] < 2) {
+			return false;
+		}
+	}
 	if (piece->compoPiece[0][0] == 0) {
 		if (right(plateau, piece)) {
 			for (int i = 0; i < 4; ++i) {

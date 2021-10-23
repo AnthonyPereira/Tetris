@@ -29,9 +29,9 @@ bool Plateau::lineEmpty(int line){
 	return true;
 }
 
-void Plateau::DelLinePlateau(){
+int Plateau::DelLinePlateau(){
 	int typeColor = 0;
-	
+	int nbLinedestroy = 0;
 	for (int i = 0; i < nbLine; ++i) {
 		bool same = 0;
 		typeColor = plateau[i][0];
@@ -47,17 +47,34 @@ void Plateau::DelLinePlateau(){
 			for (int j = 0; j < nbCol; ++j) {
 				plateau[i][j] = 0;
 			}
+			nbLinedestroy++;
 		}
 	}
-	bool precEmpty = lineEmpty(nbLine-1);
+	downPlateau();
+	return nbLinedestroy;
+}
+
+void Plateau::downPlateau(){
+	bool precEmpty = lineEmpty(nbLine - 1);
 	bool currentEmpty;
-	for (int i = nbLine-2; i >= 0; --i) {
+	for (int i = nbLine - 2; i >= 0; --i) {
 		currentEmpty = lineEmpty(i);
 		if (precEmpty && !currentEmpty) {
-			std::swap(plateau[i+1], plateau[i]);
+			std::swap(plateau[i + 1], plateau[i]);
 		}
-		precEmpty = currentEmpty;
+		else {
+			precEmpty = currentEmpty;
+		}
 	}
+}
+
+bool Plateau::verifLose(){
+	for (int i = 0; i < nbCol; ++i) {
+		if (plateau[0][i]) {
+			return true;
+		}
+	}
+	return false;
 }
 
 void Plateau::clear() {
