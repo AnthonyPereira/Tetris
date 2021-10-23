@@ -17,5 +17,5 @@ public:
 	void downPlateau();
 	bool verifLose();
 	void clear();
-	
+	~Plateau();
 };

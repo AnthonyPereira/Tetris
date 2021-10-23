@@ -42,18 +42,38 @@ void MouvManager::goDown(){
 		nextPiece->replacePiece((rand() % NBCOLOR)+1, (rand() % NBPIECE)+1);
 		cout << currentPiece->piece << endl;
 	}
-	points += (plateau->DelLinePlateau()*plateau->nbCol*10);
+	points += (plateau->DelLinePlateau()*plateau->nbCol);
 
 }
 
 void MouvManager::turnLeft(){
+	int tmp[4][2];
+	for (int i = 0; i < 4; ++i) {
+		for (int j = 0; j < 2; ++j) {
+			tmp[i][j] = currentPiece->compoPiece[i][j];
+		}
+	}
 	if (verifTurnLeft(plateau, currentPiece)) {
 		currentPiece->turnLeft();
+		if (!verifIntegrity(plateau, currentPiece)) {
+			for (int i = 0; i < 4; ++i) {
+				for (int j = 0; j < 2; ++j) {
+					currentPiece->compoPiece[i][j] = tmp[i][j];
+				}
+			}
+		}
 	}
 }
 
 bool MouvManager::verifLose(){
 	return plateau->verifLose();
+}
+
+MouvManager::~MouvManager(){
+	delete currentPiece;
+	delete nextPiece;
+	delete plateau;
+	
 }
 
 
