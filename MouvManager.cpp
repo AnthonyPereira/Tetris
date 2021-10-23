@@ -28,6 +28,7 @@ void MouvManager::goRight(){
 }
 
 void MouvManager::goDown(){
+
 	if (down(plateau, currentPiece)) {
 		currentPiece->goDown();
 	}
@@ -36,6 +37,8 @@ void MouvManager::goDown(){
 		*currentPiece = *nextPiece;
 		nextPiece->replacePiece((rand() % NBCOLOR)+1, (rand() % NBPIECE)+1);
 	}
+	plateau->DelLinePlateau();
+
 }
 
 void MouvManager::turnLeft(){

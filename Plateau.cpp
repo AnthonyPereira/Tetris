@@ -37,12 +37,11 @@ void Plateau::DelLinePlateau(){
 		typeColor = plateau[i][0];
 		for (int j = 0; j < nbCol; ++j) {
 			if (plateau[i][j] == 0) {
+				same = 0;
 				break;
+				
 			}
-			same = typeColor == plateau[i][j];
-			if (!same) {
-				break;
-			}
+			same = 1;
 		}
 		if (same) {
 			for (int j = 0; j < nbCol; ++j) {
