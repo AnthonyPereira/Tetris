@@ -22,6 +22,12 @@ void EventsManager::analyseEvent(sf::Event* event,MouvManager* mManager, sf::Ren
             case sf::Keyboard::Q:
                 mManager->goLeft();
                 break;
+            case sf::Keyboard::Z:
+                mManager->turnLeft();
+                break;
+            case sf::Keyboard::S:
+                mManager->goDown();
+                break;
             default:
                 break;
             }

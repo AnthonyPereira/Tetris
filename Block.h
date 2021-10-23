@@ -15,7 +15,7 @@ public:
 	static const int TEXTURE_SIZE = 32;
 	sf::Sprite sprite;
 
-	sf::IntRect rectangle = sf::IntRect(0, 0, 512, 512);
+	sf::IntRect rectangle = sf::IntRect(0, 0, 128, 128);
 
 
 	Block();

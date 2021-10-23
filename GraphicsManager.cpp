@@ -6,7 +6,7 @@ using namespace std;
 
 #include "GraphicsManager.h"
 #include "MouvManager.h"
-
+#include <iostream>
 #include "Block.h"
 
 
@@ -23,6 +23,8 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager) {
     window->draw(background);
     window->draw(*plate);
     tetromino->setX(mManager->currentPiece->mid);
+    tetromino->changeTexture(mManager->currentPiece->color);
+    
 
     for (int* i : mManager->currentPiece->compoPiece) {
         tetromino->setX(512+i[0] * Block::TEXTURE_SIZE);

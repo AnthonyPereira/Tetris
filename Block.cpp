@@ -32,10 +32,10 @@ double Block::getY() const {
 
 
 void Block::changeTexture(int n){
-	rectangle.left = 512*n;
+	rectangle.left = 128*(n-1);
 	sprite.setTextureRect(rectangle);
 }
 
 
 
-const float Block::FACTOR = 0.0625f;
+const float Block::FACTOR = 0.25f;
