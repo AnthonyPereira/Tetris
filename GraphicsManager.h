@@ -11,6 +11,7 @@ class GraphicsManager
 
 	public:
 		int Render(sf::RenderWindow* window, MouvManager* mManager);
+		int RenderMenu(sf::RenderWindow* window);
 		Block* tetromino;
 		Block* blockplateau;
 

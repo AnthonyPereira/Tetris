@@ -1,23 +1,2 @@
-﻿  Block.cpp
-D:\Cours\MASTER 2\tetris-bp\Block.cpp(16,18): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-D:\Cours\MASTER 2\tetris-bp\Block.cpp(20,18): warning C4244: '=' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-  EventsManager.cpp
-  GraphicsManager.cpp
-  integrityPlateau.cpp
-  main.cpp
-  MouvManager.cpp
-D:\Cours\MASTER 2\tetris-bp\MouvManager.cpp(11,12): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-D:\Cours\MASTER 2\tetris-bp\MouvManager.cpp(39,13): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-  Piece.cpp
-  Plateau.cpp
-  Génération de code en cours...
-  LINK : D:\Cours\MASTER 2\tetris-bp\x64\Debug\Tetris.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
+﻿  main.cpp
   Tetris.vcxproj -> D:\Cours\MASTER 2\tetris-bp\x64\Debug\Tetris.exe

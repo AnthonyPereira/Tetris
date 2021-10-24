@@ -21,7 +21,7 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager) {
    
 
 
-    //window->clear();    //verifier si on peut clear uniquement les blocks
+    window->clear();    //verifier si on peut clear uniquement les blocks
     window->draw(background);
     window->draw(*plate);
     tetromino->setX(mManager->currentPiece->mid);
@@ -47,6 +47,13 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager) {
         window->draw(tetromino->sprite);
     }
 
+    window->display();
+    return 1;
+};
+
+int GraphicsManager::RenderMenu(sf::RenderWindow* window) {
+    window->clear();    
+    window->draw(background);
     window->display();
     return 1;
 };
