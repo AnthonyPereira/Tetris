@@ -85,3 +85,10 @@ void Plateau::clear() {
 	}
 }
 
+Plateau::~Plateau(){
+	for (int i = 0; i < nbLine; ++i) {
+		delete[] plateau[i];
+	}
+	delete[] plateau;
+}
+

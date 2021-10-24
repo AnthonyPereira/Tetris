@@ -19,4 +19,7 @@ class MouvManager {
 		void turnLeft();
 		bool verifLose();
 
+		~MouvManager();
+
+
 };

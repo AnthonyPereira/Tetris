@@ -76,3 +76,12 @@ bool verifTurnLeft(Plateau* plateau, Piece* piece){
 	return true;
 }
 
+bool verifIntegrity(Plateau* plateau, Piece* piece){
+	for (int i = 0; i < 4; ++i) {
+		if (plateau->plateau[piece->compoPiece[i][1]][piece->compoPiece[i][0]] != 0) {
+			return false;
+		}
+	}
+	return true;
+}
+

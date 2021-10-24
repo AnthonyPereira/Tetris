@@ -107,11 +107,11 @@ void Piece::replacePiece(int color, int piece){
 		else if (piece == 7) {
 			/*
 							| | |
-		   compoPiece[0]->| | |
+						  | | |<-compoPiece[0]
 			*/
 			compoPiece[1][0] = mid + 1;
 			compoPiece[1][1] = 0;
-			compoPiece[2][0] = mid + 1;
+			compoPiece[2][0] = mid -1 ;
 			compoPiece[2][1] = 1;
 			compoPiece[3][0] = mid;
 			compoPiece[3][1] = 0;
@@ -161,22 +161,22 @@ void Piece::turnLeft(){
 
 	if (piece == 3) {
 		if (compoPiece[1][0] == compoPiece[0][0]) {
-			compoPiece[1][1] = compoPiece[0][1];
 			if (compoPiece[1][1] == compoPiece[0][1] + 2) {
 				compoPiece[1][0] += 2;
 			}
 			else{
 				compoPiece[1][0] -= 2;
 			}
+			compoPiece[1][1] = compoPiece[0][1];
 		}
 		else {
-			compoPiece[1][0] = compoPiece[0][0];
 			if (compoPiece[1][0] == compoPiece[0][0] + 2) {
-				compoPiece[1][1] += 2;
-			}
-			else {
 				compoPiece[1][1] -= 2;
 			}
+			else {
+				compoPiece[1][1] += 2;
+			}
+			compoPiece[1][0] = compoPiece[0][0];
 		}
 	}
 
@@ -216,13 +216,3 @@ Piece& Piece::operator=(const Piece& p2){
 	this->piece = p2.piece;
 	return *this;
 }
-
-
-
-/*
-void Piece::replacePiece(int* color, int* piece){
-	for (int i = 0; i < 4; ++i) {
-		compoPiece[i]
-	}
-}
-*/
