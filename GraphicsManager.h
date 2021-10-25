@@ -10,8 +10,8 @@ class GraphicsManager
 {
 
 	public:
-		int Render(sf::RenderWindow* window, MouvManager* mManager);
-		int RenderMenu(sf::RenderWindow* window);
+		int Render(sf::RenderWindow* window, MouvManager* mManager, sf::Time time);
+		int RenderMenu(sf::RenderWindow* window, sf::Clock& c);
 		Block* tetromino;
 		Block* blockplateau;
 

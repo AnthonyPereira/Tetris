@@ -14,6 +14,8 @@ MouvManager::MouvManager(int mid, int line, int col){
 	currentPiece->replacePiece((rand() % NBCOLOR)+1, (rand() % NBPIECE) + 1);
 	nextPiece->replacePiece((rand() % NBCOLOR) + 1, (rand() % NBPIECE)+1);
 	plateau = new Plateau(line, col);
+	speed = 1.25;
+	delta = 0.8;
 	points = 0;
 }
 
@@ -40,7 +42,11 @@ void MouvManager::goDown(){
 		plateau->addPiece(currentPiece);
 		*currentPiece = *nextPiece;
 		nextPiece->replacePiece((rand() % NBCOLOR)+1, (rand() % NBPIECE)+1);
-		cout << currentPiece->piece << endl;
+		if (delta > 0.4) {
+			delta *= 0.95;
+			speed = 1 / delta;
+
+		}
 	}
 	points += (plateau->DelLinePlateau()*plateau->nbCol);
 
