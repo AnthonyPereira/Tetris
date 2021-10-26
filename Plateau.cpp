@@ -68,15 +68,6 @@ void Plateau::downPlateau(){
 	}
 }
 
-bool Plateau::verifLose(){
-	for (int i = 0; i < nbCol; ++i) {
-		if (plateau[0][i]) {
-			return true;
-		}
-	}
-	return false;
-}
-
 void Plateau::clear() {
 	for (int i = 0; i < nbLine; ++i) {
 		for (int j = 0; j < nbCol; ++j) {

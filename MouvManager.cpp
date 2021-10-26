@@ -1,4 +1,5 @@
 #include "MouvManager.h"
+#include "integrityPlateau.h"
 #include <time.h>
 #include <iostream>
 #define NBPIECE 7
@@ -74,7 +75,7 @@ void MouvManager::turnLeft(){
 }
 
 bool MouvManager::verifLose(){
-	return plateau->verifLose();
+	return !verifIntegrity(plateau, currentPiece);
 }
 
 MouvManager::~MouvManager(){

@@ -1,2 +1,31 @@
-﻿  Plateau.cpp
-  Tetris.vcxproj -> D:\Cours\MASTER 2\tetris-bp\x64\Debug\Tetris.exe
+﻿  EventsManager.cpp
+C:\Users\antho\source\repos\tetris\EventsManager.cpp(14,83): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\antho\source\repos\tetris\EventsManager.cpp(57,79): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+  GraphicsManager.cpp
+C:\Users\antho\source\repos\tetris\GraphicsManager.cpp(76,80): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\antho\source\repos\tetris\GraphicsManager.cpp(76,47): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+  MouvManager.cpp
+C:\Users\antho\source\repos\tetris\MouvManager.cpp(11,12): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+C:\Users\antho\source\repos\tetris\MouvManager.cpp(44,13): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+  Piece.cpp
+  Plateau.cpp
+  integrityPlateau.cpp
+  main.cpp
+  Génération de code en cours...
+  Tetris.vcxproj -> C:\Users\antho\source\repos\tetris\x64\Debug\Tetris.exe
