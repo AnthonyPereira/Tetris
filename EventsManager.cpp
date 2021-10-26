@@ -33,6 +33,11 @@ void EventsManager::analyseEvent(sf::Event* event,MouvManager* mManager, sf::Ren
             case sf::Keyboard::S:
                 mManager->goDown();
                 break;
+            case sf::Keyboard::Space:
+                while (down(mManager->plateau, mManager->currentPiece))
+                    mManager->goDown();
+                
+                break;
             default:
                 break;
             }

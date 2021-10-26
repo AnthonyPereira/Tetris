@@ -45,7 +45,7 @@ void menu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, Eve
 
 int main(){
     sf::RenderWindow window(sf::VideoMode(1280, 720), "Tetris 1945");
-    window.setKeyRepeatEnabled(false);
+    //window.setKeyRepeatEnabled(false);
     window.setFramerateLimit(60);
     GraphicsManager gManager;
     EventsManager eManager;
@@ -67,6 +67,12 @@ int main(){
     gManager.tetromino->sprite.setTexture(texture);
     sf::Clock c;
     int gameStatus(0);
+    /*
+    float fps;
+    sf::Clock clock = sf::Clock::Clock();
+    sf::Time previousTime = clock.getElapsedTime();
+    sf::Time currentTime;
+    */
 
     while (window.isOpen())
     {    
@@ -79,7 +85,12 @@ int main(){
         else {
             menu(window, c, gManager, eManager, gameStatus);
         }
-
+        /*
+        currentTime = clock.getElapsedTime();
+        fps = 1.0f / (currentTime.asSeconds() - previousTime.asSeconds());
+        std::cout << "fps =" << floor(fps) << std::endl;
+        previousTime = currentTime;
+        */
     }
     return 0;
 }

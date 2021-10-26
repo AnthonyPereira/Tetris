@@ -47,10 +47,10 @@ int Plateau::DelLinePlateau(){
 			for (int j = 0; j < nbCol; ++j) {
 				plateau[i][j] = 0;
 			}
+			downPlateau();
 			nbLinedestroy++;
 		}
 	}
-	downPlateau();
 	return nbLinedestroy;
 }
 
