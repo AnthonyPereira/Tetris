@@ -15,22 +15,24 @@ void jeu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, Even
         eManager.analyseEvent(&event, &mManager, &window);
     }
 
-    if (time.asSeconds() > 1) {
-        mManager.goDown();
+    gManager.Render(&window, &mManager, time);
+
+
+    if (time.asSeconds() > mManager.delta ) {
         c.restart();
-    }
+        mManager.goDown();
+    }   
 
 
-    gManager.Render(&window, &mManager);
 }
 
-void menu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, EventsManager& eManager, MouvManager& mManager) {
+void menu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, EventsManager& eManager,int &gamestatus) {
     sf::Event event;
     sf::Time time = c.getElapsedTime();
 
     while (window.pollEvent(event))
     {
-        eManager.analyseEvent(&event, &mManager, &window);
+        eManager.MenuEvent(&event,&window,gamestatus);
     }
 
     if (time.asSeconds() > 1) {
@@ -38,12 +40,12 @@ void menu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, Eve
     }
 
 
-    gManager.RenderMenu(&window);
+    gManager.RenderMenu(&window,c);
 }
 
 int main(){
-    sf::RenderWindow window(sf::VideoMode(1280, 720), "Tetris 1945", sf::Style::Titlebar | sf::Style::Close);
-    window.setKeyRepeatEnabled(false);
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Tetris 1945");
+    //window.setKeyRepeatEnabled(false);
     window.setFramerateLimit(60);
     GraphicsManager gManager;
     EventsManager eManager;
@@ -57,24 +59,38 @@ int main(){
 
     gManager.background.setTexture(background);
     gManager.background.setScale(sf::Vector2f(0.5,0.5));
-    sf::RectangleShape r(sf::Vector2f(320, 640));
+    sf::RectangleShape r(sf::Vector2f(320, 672));
     r.setFillColor(sf::Color(100, 100, 100,150));
-    r.setPosition(512, 50);
+    r.setPosition(512, 20);
     gManager.plate = &r;
     gManager.blockplateau->sprite.setTexture(texture);
     gManager.tetromino->sprite.setTexture(texture);
     sf::Clock c;
-    int gameStatus=0;
+    int gameStatus(0);
+    /*
+    float fps;
+    sf::Clock clock = sf::Clock::Clock();
+    sf::Time previousTime = clock.getElapsedTime();
+    sf::Time currentTime;
+    */
 
     while (window.isOpen())
     {    
-        if (gameStatus) {
+        if (gameStatus==1) {
             jeu(window, c, gManager, eManager, mManager);
+            if (mManager.verifLose()) {
+                gameStatus = 2;
+            }
         }
         else {
-            menu(window, c, gManager, eManager, mManager);
+            menu(window, c, gManager, eManager, gameStatus);
         }
-
+        /*
+        currentTime = clock.getElapsedTime();
+        fps = 1.0f / (currentTime.asSeconds() - previousTime.asSeconds());
+        std::cout << "fps =" << floor(fps) << std::endl;
+        previousTime = currentTime;
+        */
     }
     return 0;
 }

@@ -17,15 +17,13 @@ GraphicsManager::GraphicsManager() {
 };
 
 
-int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager) {
-   
-
-
-    window->clear();    //verifier si on peut clear uniquement les blocks
+int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::Time time) {
+    window->clear();
     window->draw(background);
     window->draw(*plate);
     tetromino->setX(mManager->currentPiece->mid);
     tetromino->changeTexture(mManager->currentPiece->color);
+
 
     for (int x=0; x < mManager->plateau->nbLine ; ++x) {
         for (int y=0; y < mManager->plateau->nbCol ; ++y) {
@@ -38,22 +36,94 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager) {
             }
         }
     }
-    
+
+    sf::Text text;
+    sf::Font font;
+    if (!font.loadFromFile("Font/stocky.ttf"))
+    {
+        return 0;
+    }
+
+    text.setFont(font);
+    text.setString("Score : "+to_string(mManager->points));
+    text.setPosition(250, 600);
+    text.setCharacterSize(40);
+
+    sf::RectangleShape r(sf::Vector2f(192,128));
+    r.setFillColor(sf::Color(100, 100, 100, 150));
+    r.setPosition(286, 68);
+    window->draw(r);
+    window->draw(text);
 
     for (int* i : mManager->currentPiece->compoPiece) {
-        tetromino->setX(512+i[0] * Block::TEXTURE_SIZE);
-        tetromino->setY(50+i[1] * Block::TEXTURE_SIZE);
-
+        tetromino->setX(512 + i[0] * Block::TEXTURE_SIZE);
+        tetromino->setY(50 + ((i[1]-1+ time.asSeconds()*(mManager->speed)) * Block::TEXTURE_SIZE));
         window->draw(tetromino->sprite);
+    } 
+
+
+    Piece ghostpiece = *mManager->currentPiece;
+    while (down(mManager->plateau,&ghostpiece))
+    {
+        ghostpiece.goDown();
     }
+    sf::RectangleShape ghostrec(sf::Vector2f(32,32));
+    ghostrec.setOutlineColor(sf::Color::White);
+    ghostrec.setFillColor(sf::Color::Transparent );
+    ghostrec.setOutlineThickness(1);
+
+    for (int* i : ghostpiece.compoPiece) {
+        ghostrec.setPosition(sf::Vector2f(512 + i[0] * Block::TEXTURE_SIZE, 50 + (i[1] * Block::TEXTURE_SIZE)));
+        
+        window->draw(ghostrec);
+    }
+
+    for (int* i : mManager->nextPiece->compoPiece) {
+        blockplateau->changeTexture(mManager->nextPiece->color);
+        if (mManager->nextPiece->piece == 3) {
+            blockplateau->setX(190 + i[0] * Block::TEXTURE_SIZE);
+            blockplateau->setY(120 + i[1] * Block::TEXTURE_SIZE);
+        }
+        else if (mManager->nextPiece->piece == 4) {
+            blockplateau->setX(190 + i[0] * Block::TEXTURE_SIZE);
+            blockplateau->setY(100 + i[1] * Block::TEXTURE_SIZE);
+        }else{
+
+            blockplateau->setX(205 + i[0] * Block::TEXTURE_SIZE);
+            blockplateau->setY(100 + i[1] * Block::TEXTURE_SIZE);
+        }
+
+        window->draw(blockplateau->sprite);
+    }
+    
 
     window->display();
     return 1;
 };
 
-int GraphicsManager::RenderMenu(sf::RenderWindow* window) {
+int GraphicsManager::RenderMenu(sf::RenderWindow* window,sf::Clock &c) {
+    sf::Text text;
+    sf::Font font;
+    if (!font.loadFromFile("Font/stocky.ttf"))
+    {
+        return 0;
+    }
+
+    text.setFont(font);
+    text.setString("Press P to start");
+    text.setPosition(400,300);
+    text.setCharacterSize(50); 
+    sf::Color color(100, 100, 100,150);
+
+    if (c.getElapsedTime().asMilliseconds() < 500) {
+        text.setFillColor(sf::Color::White);
+    }
+    else {
+        text.setFillColor(color);
+    }
     window->clear();    
     window->draw(background);
+    window->draw(text);
     window->display();
     return 1;
 };

@@ -10,7 +10,8 @@ class MouvManager {
 		Piece* nextPiece;
 		Plateau* plateau;
 		int points;
-
+		double speed;
+		double delta;
 		MouvManager(int mid, int line, int col);
 
 		void goLeft();
