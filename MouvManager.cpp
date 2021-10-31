@@ -7,17 +7,18 @@
 using namespace std;
 
 
-MouvManager::MouvManager(int mid, int line, int col){
+MouvManager::MouvManager(int mid, int line, int col, int mod){
 	srand(time(0));
 	currentPiece = new Piece(mid);
 	nextPiece = new Piece(mid);
-	
+	this->mod = mod;
 	currentPiece->replacePiece((rand() % NBPIECE)+1, (rand() % NBPIECE) + 1);
 	nextPiece->replacePiece((rand() % NBPIECE) + 1, (rand() % NBPIECE)+1);
 	plateau = new Plateau(line, col);
 	speed = 1.25;
 	delta = 0.8;
 	points = 0;
+	
 }
 
 
@@ -35,7 +36,7 @@ void MouvManager::goRight(){
 	}
 }
 
-void MouvManager::goDown(){
+vector<int> MouvManager::goDown(){
 
 	if (down(plateau, currentPiece)) {
 		currentPiece->goDown();
@@ -51,7 +52,9 @@ void MouvManager::goDown(){
 
 		}
 	}
-	points += (plateau->DelLinePlateau()*plateau->nbCol);
+	vector<int> listLineDel = plateau->DelLinePlateau(mod);
+	points += (listLineDel.size()*plateau->nbCol);
+	return listLineDel;
 
 }
 

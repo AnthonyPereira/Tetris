@@ -49,7 +49,7 @@ int main(){
     window.setFramerateLimit(60);
     GraphicsManager gManager;
     EventsManager eManager;
-    MouvManager mManager(5,20,10);
+    MouvManager mManager(5,20,10,1);
     
     sf::Texture texture,background;
     if (!background.loadFromFile("Img/Background.png"))

@@ -1,5 +1,6 @@
 #include "Plateau.h"
 
+using namespace std; 
 
 Plateau::Plateau(int nbLine, int nbCol){
 	this->nbLine = nbLine;
@@ -29,29 +30,45 @@ bool Plateau::lineEmpty(int line){
 	return true;
 }
 
-int Plateau::DelLinePlateau(){
+vector<int> Plateau::DelLinePlateau(int mod){
 	int typeColor = 0;
-	int nbLinedestroy = 0;
+	vector<int> ret;
 	for (int i = 0; i < nbLine; ++i) {
-		bool same = 0;
+		bool notEmpty = 0;
+		bool same = 1;
+		int precColor = plateau[i][0];
 		typeColor = plateau[i][0];
 		for (int j = 0; j < nbCol; ++j) {
 			if (plateau[i][j] == 0) {
+				notEmpty = 0;
+				break;	
+			}
+			if (precColor != plateau[i][j]) {
 				same = 0;
-				break;
+			}
+			notEmpty = 1;
+		}
+		if (notEmpty) {
+			if (mod == 1 && plateau[i][0] == 6) {
+				clear();
+			}
+			for (int j = 0; j < nbCol; ++j) {
+				ret.push_back(i);
+				if (mod == 1 && plateau[i][j] == 3) {
+					plateau[i - 1][j] = 0;
+					plateau[i + 1][j] = 0;
+				}
+				plateau[i][j] = 0;
 				
 			}
-			same = 1;
-		}
-		if (same) {
-			for (int j = 0; j < nbCol; ++j) {
-				plateau[i][j] = 0;
+			if (mod == 1) {
+				downPlateau();
+				downPlateau();
 			}
 			downPlateau();
-			nbLinedestroy++;
 		}
 	}
-	return nbLinedestroy;
+	return ret;
 }
 
 void Plateau::downPlateau(){
