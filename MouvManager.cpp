@@ -1,19 +1,18 @@
 #include "MouvManager.h"
-#include "integrityPlateau.h"
-#include <time.h>
-#include <iostream>
-#define NBPIECE 7
+
 
 using namespace std;
 
 
 MouvManager::MouvManager(int mid, int line, int col, int mod){
-	srand(time(0));
+	allPiece = { 1,2,3,4,5,6,7 };
+	mt19937 g(rd());
+	shuffle(allPiece.begin(), allPiece.end(), g);
 	currentPiece = new Piece(mid);
 	nextPiece = new Piece(mid);
 	this->mod = mod;
-	currentPiece->replacePiece((rand() % NBPIECE)+1, (rand() % NBPIECE) + 1);
-	nextPiece->replacePiece((rand() % NBPIECE) + 1, (rand() % NBPIECE)+1);
+	currentPiece->replacePiece(allPiece[0], allPiece[3]);
+	nextPiece->replacePiece(allPiece[6], allPiece[2]);
 	plateau = new Plateau(line, col);
 	speed = 1.25;
 	delta = 0.8;
@@ -42,10 +41,11 @@ vector<int> MouvManager::goDown(){
 		currentPiece->goDown();
 	}
 	else {
-		srand(time(0));
 		plateau->addPiece(currentPiece);
 		*currentPiece = *nextPiece;
-		nextPiece->replacePiece((rand() % NBPIECE)+1, (rand() % NBPIECE)+1);
+		mt19937 g(rd());
+		shuffle(allPiece.begin(), allPiece.end(), g);
+		nextPiece->replacePiece(allPiece[0], allPiece[5]);
 		if (delta > 0.3) {
 			delta *= 0.94;
 			speed = 1 / delta;

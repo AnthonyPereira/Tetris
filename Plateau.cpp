@@ -49,12 +49,12 @@ vector<int> Plateau::DelLinePlateau(int mod){
 			notEmpty = 1;
 		}
 		if (notEmpty) {
-			if (mod == 1 && plateau[i][0] == 6) {
+			if (mod == 1 && plateau[i][0] == 6 && same == 1) {
 				clear();
 			}
 			for (int j = 0; j < nbCol; ++j) {
 				ret.push_back(i);
-				if (mod == 1 && plateau[i][j] == 3) {
+				if (mod == 1 && plateau[i][j] == 3 && same == 1) {
 					plateau[i - 1][j] = 0;
 					plateau[i + 1][j] = 0;
 				}

@@ -1,9 +1,17 @@
 #pragma once
 
-#include <vector>
 #include "Piece.h"
 #include "integrityPlateau.h"
 #include "Plateau.h"
+#include <time.h>
+#include <iostream>
+#include <random>
+#include <algorithm>
+#include <iterator>
+#include <iostream>
+#include <vector>
+
+using namespace std;
 
 class MouvManager {
 	public:
@@ -14,6 +22,9 @@ class MouvManager {
 		double speed;
 		double delta;
 		int mod;
+		vector<int> allPiece;
+		random_device rd;
+
 
 		MouvManager(int mid, int line, int col, int mod);
 		/* creer un mouvManager avec les parametres (mid) de la fabrication des pieces et (line, col) qui sont pour la fabrication d'un plateau */

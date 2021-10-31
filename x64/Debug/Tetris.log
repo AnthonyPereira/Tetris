@@ -1,5 +1,5 @@
 ﻿  MouvManager.cpp
-C:\Users\antho\source\repos\tetris\MouvManager.cpp(11,12): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-C:\Users\antho\source\repos\tetris\MouvManager.cpp(45,13): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
 C:\Users\antho\source\repos\tetris\MouvManager.cpp(56,47): warning C4267: '+=' : conversion de 'size_t' en 'int', perte possible de données
+  Plateau.cpp
+  Génération de code en cours...
   Tetris.vcxproj -> C:\Users\antho\source\repos\tetris\x64\Debug\Tetris.exe
