@@ -80,6 +80,7 @@ int main(){
             jeu(window, c, gManager, eManager, mManager);
             if (mManager.verifLose()) {
                 gameStatus = 2;
+                mManager.resetGame(5,20,10);
             }
         }
         else {

@@ -2,12 +2,12 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\antho\source\repos\tetris\x64\Debug\Tetris.exe</FullPath>
+      <FullPath>D:\Cours\MASTER 2\tetris-bp\x64\Debug\Tetris.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>C:\Users\antho\source\repos\tetris\Img\TextureTetris.png</FullPath>
+      <FullPath>D:\Cours\MASTER 2\tetris-bp\Img\TextureTetris.png</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />

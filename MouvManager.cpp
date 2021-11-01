@@ -21,7 +21,12 @@ MouvManager::MouvManager(int mid, int line, int col){
 }
 
 
-
+void MouvManager::resetGame(int mid, int line, int col) {
+	speed = 1.25;
+	delta = 0.8;
+	points = 0;
+	plateau->clear();
+}
 
 void MouvManager::goLeft(){
 	if (left(plateau, currentPiece)) {
@@ -48,7 +53,6 @@ void MouvManager::goDown(){
 		if (delta > 0.3) {
 			delta *= 0.94;
 			speed = 1 / delta;
-
 		}
 	}
 	points += (plateau->DelLinePlateau()*plateau->nbCol);

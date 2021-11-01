@@ -15,6 +15,8 @@ class MouvManager {
 		MouvManager(int mid, int line, int col);
 		/* creer un mouvManager avec les parametres (mid) de la fabrication des pieces et (line, col) qui sont pour la fabrication d'un plateau */
 
+		void resetGame(int mid, int line, int col);
+
 		void goLeft();
 		/* appelle la (currentPiece) pour lui dire d'aller sur gauche de 1*/
 		void goRight();
