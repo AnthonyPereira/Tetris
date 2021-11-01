@@ -1,5 +1,9 @@
 #include "Piece.h"
 
+#include <iostream>
+
+using namespace std;
+
 Piece::Piece(int mid) {
 	for (int i = 0; i < 4; ++i) {
 		for (int j = 0; j < 2; ++j) {
@@ -51,12 +55,11 @@ void Piece::replacePiece(int color, int piece){
 							| |
 							| |
 			*/
-			compoPiece[0][1] = 0;
-			compoPiece[1][0] = mid+2;
-			compoPiece[1][1] = 0;
-			compoPiece[2][0] = mid+1;
-			compoPiece[2][1] = 0;
-			compoPiece[3][0] = mid-1;
+			compoPiece[1][0] = mid;
+			compoPiece[1][1] = 3;
+			compoPiece[2][0] = mid;
+			compoPiece[2][1] = 2;
+			compoPiece[3][0] = mid;
 			compoPiece[3][1] = 0;
 		}
 		else if (piece == 4) {

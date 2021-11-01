@@ -2,6 +2,7 @@
 #include "Piece.h"
 #include <stdio.h>
 #include <algorithm>
+#include <vector>
 
 class Plateau {
 public:
@@ -16,7 +17,7 @@ public:
 	/* ajout d'une piece dans le tableau en suivant les coordonnées indiqué dans la piece (newPiece) ainsi que sa couleur */
 	bool lineEmpty(int line);
 	/* vérifie si la ligne (line) est vide */
-	int DelLinePlateau();
+	std::vector<int> DelLinePlateau(int mod);
 	/* supprime une ligne du plateau */
 	void downPlateau();
 	/* remonte une ligne vide au dessus de toute les lignes avec des blocks dedans*/

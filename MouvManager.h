@@ -3,6 +3,15 @@
 #include "Piece.h"
 #include "integrityPlateau.h"
 #include "Plateau.h"
+#include <time.h>
+#include <iostream>
+#include <random>
+#include <algorithm>
+#include <iterator>
+#include <iostream>
+#include <vector>
+
+using namespace std;
 
 class MouvManager {
 	public:
@@ -12,7 +21,12 @@ class MouvManager {
 		int points;
 		double speed;
 		double delta;
-		MouvManager(int mid, int line, int col);
+		int mod;
+		vector<int> allPiece;
+		random_device rd;
+
+
+		MouvManager(int mid, int line, int col, int mod);
 		/* creer un mouvManager avec les parametres (mid) de la fabrication des pieces et (line, col) qui sont pour la fabrication d'un plateau */
 
 		void resetGame(int mid, int line, int col);
@@ -21,7 +35,7 @@ class MouvManager {
 		/* appelle la (currentPiece) pour lui dire d'aller sur gauche de 1*/
 		void goRight();
 		/* appelle la (currentPiece) pour lui dire d'aller sur droite de 1*/
-		void goDown();
+		std::vector<int> goDown();
 		/* appelle la (currentPiece) pour lui dire d'aller en bas de 1*/
 		void turnLeft();
 		/* appelle la (currentPiece) pour lui dire de tourner a gauche de 1*/
