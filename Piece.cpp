@@ -55,11 +55,12 @@ void Piece::replacePiece(int color, int piece){
 							| |
 							| |
 			*/
-			compoPiece[1][0] = mid;
-			compoPiece[1][1] = 3;
-			compoPiece[2][0] = mid;
-			compoPiece[2][1] = 2;
-			compoPiece[3][0] = mid;
+			compoPiece[0][1] = 0;
+			compoPiece[1][0] = mid-2;
+			compoPiece[1][1] = 0;
+			compoPiece[2][0] = mid-1;
+			compoPiece[2][1] = 0;
+			compoPiece[3][0] = mid+1;
 			compoPiece[3][1] = 0;
 		}
 		else if (piece == 4) {
