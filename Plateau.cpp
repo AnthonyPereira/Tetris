@@ -50,17 +50,25 @@ vector<int> Plateau::DelLinePlateau(int mod){
 			notEmpty = 1;
 		}
 		if (notEmpty) {
+			if (plateau[i][0] == 3 && same == 1) {
+				ret.push_back(i - 1);
+				if (i != nbLine - 1) {
+					ret.push_back(i + 1);
+				}	
+			}
+			ret.push_back(i);
 			if (mod == 1 && plateau[i][0] == 6 && same == 1) {
 				clear();
+				for (int w = 0; w < 19; ++w) {
+					ret.push_back(i);
+				}
 			}
 			for (int j = 0; j < nbCol; ++j) {
-				ret.push_back(i);
 				if (mod == 1 && plateau[i][j] == 3 && same == 1) {
 					plateau[i - 1][j] = 0;
 					plateau[i + 1][j] = 0;
 				}
 				plateau[i][j] = 0;
-				
 			}
 			if (mod == 1) {
 				downPlateau();

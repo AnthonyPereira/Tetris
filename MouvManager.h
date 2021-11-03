@@ -26,6 +26,7 @@ class MouvManager {
 		vector<int> precPiece;
 		vector<int> precColor;
 		random_device rd;
+		int level;
 
 
 
