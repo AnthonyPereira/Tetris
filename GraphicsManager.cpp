@@ -55,12 +55,17 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::T
     text.setString("Score : "+to_string(mManager->points));
     text.setPosition(250, 600);
     text.setCharacterSize(40);
+    window->draw(text);
+
+    /*text.setString(to_string(mManager->level));
+    text.setPosition(250, 500);
+    text.setCharacterSize(80);
+    window->draw(text);*/
 
     sf::RectangleShape r(sf::Vector2f(192,128));
     r.setFillColor(sf::Color(100, 100, 100, 150));
     r.setPosition(286, 68);
     window->draw(r);
-    window->draw(text);
 
     for (int* i : mManager->currentPiece->compoPiece) {
         tetromino->setX(512 + i[0] * Block::TEXTURE_SIZE);
@@ -87,7 +92,7 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::T
     for (int* i : mManager->nextPiece->compoPiece) {
         blockplateau->changeTexture(mManager->nextPiece->color);
         if (mManager->nextPiece->piece == 3) {
-            blockplateau->setX(190 + i[0] * Block::TEXTURE_SIZE);
+            blockplateau->setX(222 + i[0] * Block::TEXTURE_SIZE);
             blockplateau->setY(120 + i[1] * Block::TEXTURE_SIZE);
         }
         else if (mManager->nextPiece->piece == 4) {
