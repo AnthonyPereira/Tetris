@@ -23,7 +23,10 @@ class MouvManager {
 		double delta;
 		int mod;
 		vector<int> allPiece;
+		vector<int> precPiece;
+		vector<int> precColor;
 		random_device rd;
+
 
 
 		MouvManager(int mid, int line, int col, int mod);

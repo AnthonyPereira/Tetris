@@ -11,6 +11,10 @@ MouvManager::MouvManager(int mid, int line, int col, int mod){
 	currentPiece = new Piece(mid);
 	nextPiece = new Piece(mid);
 	this->mod = mod;
+	precPiece.push_back(allPiece[3]);
+	precPiece.push_back(allPiece[2]);
+	precColor.push_back(allPiece[0]);
+	precColor.push_back(allPiece[6]);
 	currentPiece->replacePiece(allPiece[0], allPiece[3]);
 	nextPiece->replacePiece(allPiece[6], allPiece[2]);
 	plateau = new Plateau(line, col);
@@ -45,7 +49,21 @@ vector<int> MouvManager::goDown(){
 		*currentPiece = *nextPiece;
 		mt19937 g(rd());
 		shuffle(allPiece.begin(), allPiece.end(), g);
-		nextPiece->replacePiece(allPiece[0], allPiece[5]);
+		if (precPiece.size() == 3) {
+			precPiece.erase(precPiece.begin());
+			precColor.erase(precColor.begin());
+		}
+		int i = 0;
+		int j = 0;
+		while (find(precPiece.begin(), precPiece.end(), allPiece[i]) != precPiece.end()) {
+			++i;
+		}
+		precPiece.push_back(allPiece[i]);
+		while (find(precColor.begin(), precColor.end(), allPiece[j]) != precColor.end()) {
+			++j;
+		}
+		precColor.push_back(allPiece[j]);
+		nextPiece->replacePiece(allPiece[j], allPiece[i]);
 		if (delta > 0.3) {
 			delta *= 0.94;
 			speed = 1 / delta;
