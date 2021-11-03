@@ -21,6 +21,7 @@ MouvManager::MouvManager(int mid, int line, int col, int mod){
 	speed = 1.25;
 	delta = 0.8;
 	points = 0;
+	level = 1;
 	
 }
 
@@ -75,7 +76,24 @@ vector<int> MouvManager::goDown(){
 		}
 	}
 	vector<int> listLineDel = plateau->DelLinePlateau(mod);
-	points += (listLineDel.size()*plateau->nbCol);
+	if (listLineDel.size() == 1) {
+		points += (40 * level);
+	}
+	else if (listLineDel.size() == 2) {
+		points += (100 * level);
+	}
+	else if (listLineDel.size() == 3) {
+		points += (300 * level);
+	}
+	else if (listLineDel.size() == 4) {
+		points += (1200 * level);
+	}
+	else if (listLineDel.size() == 20) {
+		points += (3000 * level);
+	}
+	if (points >= 1200 * level) {
+		++level;
+	}
 	return listLineDel;
 
 }

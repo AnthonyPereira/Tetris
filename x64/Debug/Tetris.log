@@ -1,39 +1,4 @@
-﻿  EventsManager.cpp
-D:\Cours\MASTER 2\tetris-bp\EventsManager.cpp(14,83): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=unsigned int
-          ]
-D:\Cours\MASTER 2\tetris-bp\EventsManager.cpp(57,79): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=unsigned int
-          ]
-  GraphicsManager.cpp
-D:\Cours\MASTER 2\tetris-bp\GraphicsManager.cpp(41,81): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-D:\Cours\MASTER 2\tetris-bp\GraphicsManager.cpp(41,51): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-D:\Cours\MASTER 2\tetris-bp\GraphicsManager.cpp(82,80): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-D:\Cours\MASTER 2\tetris-bp\GraphicsManager.cpp(82,47): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-  MouvManager.cpp
-D:\Cours\MASTER 2\tetris-bp\MouvManager.cpp(78,47): warning C4267: '+=' : conversion de 'size_t' en 'int', perte possible de données
-  Piece.cpp
-  main.cpp
+﻿  MouvManager.cpp
+  Plateau.cpp
   Génération de code en cours...
-  LINK : D:\Cours\MASTER 2\tetris-bp\x64\Debug\Tetris.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
-  Tetris.vcxproj -> D:\Cours\MASTER 2\tetris-bp\x64\Debug\Tetris.exe
+  Tetris.vcxproj -> C:\Users\antho\source\repos\tetris\x64\Debug\Tetris.exe
