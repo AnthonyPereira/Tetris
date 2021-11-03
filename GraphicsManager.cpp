@@ -17,13 +17,14 @@ GraphicsManager::GraphicsManager() {
 };
 
 
-int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::Time time) {
+int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::Time time,vector<int> destroyed) {
     window->clear();
     window->draw(background);
     window->draw(*plate);
     tetromino->setX(mManager->currentPiece->mid);
     tetromino->changeTexture(mManager->currentPiece->color);
-
+    sf::RectangleShape ghostrec(sf::Vector2f(32, 32));
+    ghostrec.setOutlineColor(sf::Color::White);
 
     for (int x=0; x < mManager->plateau->nbLine ; ++x) {
         for (int y=0; y < mManager->plateau->nbCol ; ++y) {
@@ -32,8 +33,14 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::T
                 blockplateau->setX(512 + y * Block::TEXTURE_SIZE);
                 blockplateau->setY(50 + x * Block::TEXTURE_SIZE);
                 window->draw(blockplateau->sprite);
-
             }
+        }
+    }
+    for (int i : destroyed) {
+        for (int y = 0; y < mManager->plateau->nbCol; ++y) {
+            ghostrec.setPosition(sf::Vector2f(512 + y * Block::TEXTURE_SIZE, 50 + i * Block::TEXTURE_SIZE));
+            window->draw(ghostrec);
+            
         }
     }
 
@@ -67,8 +74,7 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::T
     {
         ghostpiece.goDown();
     }
-    sf::RectangleShape ghostrec(sf::Vector2f(32,32));
-    ghostrec.setOutlineColor(sf::Color::White);
+    
     ghostrec.setFillColor(sf::Color::Transparent );
     ghostrec.setOutlineThickness(1);
 

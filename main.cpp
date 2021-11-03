@@ -15,13 +15,14 @@ void jeu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, Even
         eManager.analyseEvent(&event, &mManager, &window);
     }
 
-    gManager.Render(&window, &mManager, time);
-
+    vector<int> destroyed;
 
     if (time.asSeconds() > mManager.delta ) {
         c.restart();
-        mManager.goDown();
+        destroyed=mManager.goDown();
     }   
+    gManager.Render(&window, &mManager, c.getElapsedTime(),destroyed);
+
 
 
 }

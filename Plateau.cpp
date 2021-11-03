@@ -33,6 +33,7 @@ bool Plateau::lineEmpty(int line){
 vector<int> Plateau::DelLinePlateau(int mod){
 	int typeColor = 0;
 	vector<int> ret;
+
 	for (int i = 0; i < nbLine; ++i) {
 		bool notEmpty = 0;
 		bool same = 1;
