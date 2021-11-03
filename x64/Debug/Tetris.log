@@ -1,3 +1,2 @@
-﻿  MouvManager.cpp
-C:\Users\antho\source\repos\tetris\MouvManager.cpp(74,47): warning C4267: '+=' : conversion de 'size_t' en 'int', perte possible de données
+﻿  integrityPlateau.cpp
   Tetris.vcxproj -> C:\Users\antho\source\repos\tetris\x64\Debug\Tetris.exe
