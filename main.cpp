@@ -70,16 +70,8 @@ int main(){
     int gameStatus(0);
     int menubutton(0);
 
-    /*
-    float fps;
-    sf::Clock clock = sf::Clock::Clock();
-    sf::Time previousTime = clock.getElapsedTime();
-    sf::Time currentTime;
-    */
-
     while (window.isOpen())
     {   
-
         if (gameStatus==1 || gameStatus == 2) {
             jeu(window, c, gManager, eManager, mManager);
             if (mManager.verifLose()) {
@@ -91,17 +83,9 @@ int main(){
             window.close();
         }
         else {        
-            cout << gameStatus << endl;
-
             menu(window, c, gManager, eManager, gameStatus,menubutton);
             mManager.mod = menubutton;
         }
-        /*
-        currentTime = clock.getElapsedTime();
-        fps = 1.0f / (currentTime.asSeconds() - previousTime.asSeconds());
-        std::cout << "fps =" << floor(fps) << std::endl;
-        previousTime = currentTime;
-        */
     }
     return 0;
 }

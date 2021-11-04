@@ -1,2 +1,14 @@
-﻿  main.cpp
+﻿  EventsManager.cpp
+D:\Cours\MASTER 2\tetris-bp\EventsManager.cpp(14,83): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+D:\Cours\MASTER 2\tetris-bp\EventsManager.cpp(69,79): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+  main.cpp
+  Génération de code en cours...
   Tetris.vcxproj -> D:\Cours\MASTER 2\tetris-bp\x64\Debug\Tetris.exe

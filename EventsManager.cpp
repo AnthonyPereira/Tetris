@@ -33,6 +33,18 @@ void EventsManager::analyseEvent(sf::Event* event,MouvManager* mManager, sf::Ren
             case sf::Keyboard::S:
                 mManager->goDown();
                 break;
+            case sf::Keyboard::Right:
+                mManager->goRight();
+                break;
+            case sf::Keyboard::Left:
+                mManager->goLeft();
+                break;
+            case sf::Keyboard::Up:
+                mManager->turnLeft();
+                break;
+            case sf::Keyboard::Down:
+                mManager->goDown();
+                break;
             case sf::Keyboard::Space:
                 while (down(mManager->plateau, mManager->currentPiece))
                     mManager->goDown();
@@ -71,15 +83,15 @@ void EventsManager::MenuEvent(sf::Event* event, sf::RenderWindow* window,int &ga
             break;
         case sf::Keyboard::Z:
             menubutton--;
-            if (menubutton == -1) {
-                menubutton = 2;
-            }
             break;
         case sf::Keyboard::S:
             menubutton++;
-            if (menubutton == 3) {
-                menubutton = 0;
-            }
+            break;
+        case sf::Keyboard::Up:
+            menubutton--;
+            break;
+        case sf::Keyboard::Down:
+            menubutton++;
             break;
         default:
             break;
@@ -87,5 +99,11 @@ void EventsManager::MenuEvent(sf::Event* event, sf::RenderWindow* window,int &ga
         
     default:
         break;
+    }
+    if (menubutton == -1) {
+        menubutton = 2;
+    }
+    if (menubutton == 3) {
+        menubutton = 0;
     }
 }

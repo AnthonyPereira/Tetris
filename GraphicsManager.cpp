@@ -114,6 +114,8 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::T
 int GraphicsManager::RenderMenu(sf::RenderWindow* window,sf::Clock &c,int& menubutton) {
     sf::Text text;
     sf::Font font;
+    vector<string> list = { "Jouer à Tetris","Jouer à Tetris 1942","Quitter" };
+
     if (!font.loadFromFile("Font/stocky.ttf"))
     {
         return 0;
@@ -122,7 +124,6 @@ int GraphicsManager::RenderMenu(sf::RenderWindow* window,sf::Clock &c,int& menub
     window->clear();    
     window->draw(background);
 
-    vector<string> list = { "Jouer à Tetris","Jouer à Tetris 1942","Quitter" };    
     text.setCharacterSize(50);     
     sf::Color color(100, 100, 100,150);
     text.setFont(font);
@@ -130,16 +131,12 @@ int GraphicsManager::RenderMenu(sf::RenderWindow* window,sf::Clock &c,int& menub
     for (int i = 0; i < 3; ++i) {
         text.setString(list[i]);
         text.setPosition(400,i*100+200);
-        if (i == menubutton) {
-            if (c.getElapsedTime().asMilliseconds() < 500) {
-                text.setFillColor(sf::Color::White);
-            }
-            else {
+        text.setFillColor(sf::Color::White);
+
+        if (i == menubutton && c.getElapsedTime().asMilliseconds() < 500) {
                 text.setFillColor(color);
-            }
         }
         else {
-            text.setFillColor(sf::Color::White);
         }
         window->draw(text);
     }
