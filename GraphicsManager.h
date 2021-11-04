@@ -11,7 +11,7 @@ class GraphicsManager
 
 	public:
 		int Render(sf::RenderWindow* window, MouvManager* mManager, sf::Time time,vector<int> destroyed);
-		int RenderMenu(sf::RenderWindow* window, sf::Clock& c);
+		int RenderMenu(sf::RenderWindow* window, sf::Clock& c,int& menubutton);
 		Block* tetromino;
 		Block* blockplateau;
 

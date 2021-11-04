@@ -56,11 +56,10 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::T
     text.setPosition(250, 600);
     text.setCharacterSize(40);
     window->draw(text);
-
-    /*text.setString(to_string(mManager->level));
+    text.setString(to_string(mManager->level));
     text.setPosition(250, 500);
     text.setCharacterSize(80);
-    window->draw(text);*/
+    window->draw(text);
 
     sf::RectangleShape r(sf::Vector2f(192,128));
     r.setFillColor(sf::Color(100, 100, 100, 150));
@@ -112,29 +111,41 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::T
     return 1;
 };
 
-int GraphicsManager::RenderMenu(sf::RenderWindow* window,sf::Clock &c) {
+int GraphicsManager::RenderMenu(sf::RenderWindow* window,sf::Clock &c,int& menubutton) {
     sf::Text text;
     sf::Font font;
     if (!font.loadFromFile("Font/stocky.ttf"))
     {
         return 0;
     }
-
-    text.setFont(font);
-    text.setString("Press P to start");
-    text.setPosition(400,300);
-    text.setCharacterSize(50); 
-    sf::Color color(100, 100, 100,150);
-
-    if (c.getElapsedTime().asMilliseconds() < 500) {
-        text.setFillColor(sf::Color::White);
-    }
-    else {
-        text.setFillColor(color);
-    }
+    
     window->clear();    
     window->draw(background);
-    window->draw(text);
+
+    vector<string> list = { "Jouer à Tetris","Jouer à Tetris 1942","Quitter" };    
+    text.setCharacterSize(50);     
+    sf::Color color(100, 100, 100,150);
+    text.setFont(font);
+
+    for (int i = 0; i < 3; ++i) {
+        text.setString(list[i]);
+        text.setPosition(400,i*100+200);
+        if (i == menubutton) {
+            if (c.getElapsedTime().asMilliseconds() < 500) {
+                text.setFillColor(sf::Color::White);
+            }
+            else {
+                text.setFillColor(color);
+            }
+        }
+        else {
+            text.setFillColor(sf::Color::White);
+        }
+        window->draw(text);
+    }
+    
+
+    
     window->display();
     return 1;
 };

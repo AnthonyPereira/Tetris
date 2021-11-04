@@ -21,7 +21,7 @@ MouvManager::MouvManager(int mid, int line, int col, int mod){
 	speed = 1.25;
 	delta = 0.8;
 	points = 0;
-	level = 1;
+	level = 0;
 	
 }
 
@@ -31,6 +31,8 @@ void MouvManager::resetGame(int mid, int line, int col) {
 	delta = 0.8;
 	points = 0;
 	plateau->clear();
+	level = 0;
+
 }
 
 void MouvManager::goLeft(){
@@ -70,29 +72,30 @@ vector<int> MouvManager::goDown(){
 		}
 		precColor.push_back(allPiece[j]);
 		nextPiece->replacePiece(allPiece[j], allPiece[i]);
-		if (delta > 0.3) {
-			delta *= 0.94;
-			speed = 1 / delta;
-		}
+		
 	}
 	vector<int> listLineDel = plateau->DelLinePlateau(mod);
 	if (listLineDel.size() == 1) {
-		points += (40 * level);
+		points += (40 * (level+1));
 	}
 	else if (listLineDel.size() == 2) {
-		points += (100 * level);
+		points += (100 * (level+1));
 	}
 	else if (listLineDel.size() == 3) {
-		points += (300 * level);
+		points += (300 * (level+1));
 	}
 	else if (listLineDel.size() == 4) {
-		points += (1200 * level);
+		points += (1200 * (level+1));
 	}
 	else if (listLineDel.size() == 20) {
-		points += (3000 * level);
+		points += (3000 * (level+1));
 	}
-	if (points >= 1200 * level) {
+	if (points >= 1200 * (level+1)) {
 		++level;
+		if (delta > 0.3) {
+			delta *= 0.93;
+			speed = 1 / delta;
+		}
 	}
 	return listLineDel;
 

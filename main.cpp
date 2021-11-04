@@ -27,13 +27,13 @@ void jeu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, Even
 
 }
 
-void menu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, EventsManager& eManager,int &gamestatus) {
+void menu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, EventsManager& eManager, int& gamestatus, int& menubutton) {
     sf::Event event;
     sf::Time time = c.getElapsedTime();
 
     while (window.pollEvent(event))
     {
-        eManager.MenuEvent(&event,&window,gamestatus);
+        eManager.MenuEvent(&event,&window,gamestatus,menubutton);
     }
 
     if (time.asSeconds() > 1) {
@@ -41,7 +41,7 @@ void menu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, Eve
     }
 
 
-    gManager.RenderMenu(&window,c);
+    gManager.RenderMenu(&window,c,menubutton);
 }
 
 int main(){
@@ -68,6 +68,8 @@ int main(){
     gManager.tetromino->sprite.setTexture(texture);
     sf::Clock c;
     int gameStatus(0);
+    int menubutton(0);
+
     /*
     float fps;
     sf::Clock clock = sf::Clock::Clock();
@@ -76,16 +78,23 @@ int main(){
     */
 
     while (window.isOpen())
-    {    
-        if (gameStatus==1) {
+    {   
+
+        if (gameStatus==1 || gameStatus == 2) {
             jeu(window, c, gManager, eManager, mManager);
             if (mManager.verifLose()) {
-                gameStatus = 2;
+                gameStatus = 0;
                 mManager.resetGame(5,20,10);
             }
         }
-        else {
-            menu(window, c, gManager, eManager, gameStatus);
+        else if (gameStatus == 3) {
+            window.close();
+        }
+        else {        
+            cout << gameStatus << endl;
+
+            menu(window, c, gManager, eManager, gameStatus,menubutton);
+            mManager.mod = menubutton;
         }
         /*
         currentTime = clock.getElapsedTime();

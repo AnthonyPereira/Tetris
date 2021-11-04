@@ -1,22 +1,2 @@
-﻿  GraphicsManager.cpp
-D:\Cours\MASTER 2\tetris-bp\GraphicsManager.cpp(41,81): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-D:\Cours\MASTER 2\tetris-bp\GraphicsManager.cpp(41,51): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-D:\Cours\MASTER 2\tetris-bp\GraphicsManager.cpp(86,80): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-D:\Cours\MASTER 2\tetris-bp\GraphicsManager.cpp(86,47): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
+﻿  main.cpp
   Tetris.vcxproj -> D:\Cours\MASTER 2\tetris-bp\x64\Debug\Tetris.exe

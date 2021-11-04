@@ -49,7 +49,7 @@ void EventsManager::analyseEvent(sf::Event* event,MouvManager* mManager, sf::Ren
 }
 
 
-void EventsManager::MenuEvent(sf::Event* event, sf::RenderWindow* window,int &gamestatus) {
+void EventsManager::MenuEvent(sf::Event* event, sf::RenderWindow* window,int &gamestatus, int& menubutton) {
 
     switch (event->type)
     {
@@ -60,12 +60,26 @@ void EventsManager::MenuEvent(sf::Event* event, sf::RenderWindow* window,int &ga
     case sf::Event::Closed:
         window->close();
         break;
-
         // touche pressée
     case sf::Event::KeyPressed:
         switch (event->key.code) {
-        case sf::Keyboard::P:
-            gamestatus=1;
+        case sf::Keyboard::Enter:
+            gamestatus = menubutton + 1;
+            break;
+        case sf::Keyboard::Space:
+            gamestatus = menubutton + 1;
+            break;
+        case sf::Keyboard::Z:
+            menubutton--;
+            if (menubutton == -1) {
+                menubutton = 2;
+            }
+            break;
+        case sf::Keyboard::S:
+            menubutton++;
+            if (menubutton == 3) {
+                menubutton = 0;
+            }
             break;
         default:
             break;
