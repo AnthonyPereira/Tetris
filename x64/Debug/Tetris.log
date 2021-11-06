@@ -1,14 +1,28 @@
-﻿  EventsManager.cpp
-D:\Cours\MASTER 2\tetris-bp\EventsManager.cpp(14,83): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+﻿  GraphicsManager.cpp
+D:\Cours\MASTER 2\tetris-bp\GraphicsManager.cpp(26,43): warning C4305: 'argument' : troncation de 'double' à 'T'
           with
           [
-              T=unsigned int
+              T=float
           ]
-D:\Cours\MASTER 2\tetris-bp\EventsManager.cpp(69,79): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+D:\Cours\MASTER 2\tetris-bp\GraphicsManager.cpp(52,81): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
           with
           [
-              T=unsigned int
+              T=float
           ]
-  main.cpp
-  Génération de code en cours...
+D:\Cours\MASTER 2\tetris-bp\GraphicsManager.cpp(52,51): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+D:\Cours\MASTER 2\tetris-bp\GraphicsManager.cpp(95,80): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+D:\Cours\MASTER 2\tetris-bp\GraphicsManager.cpp(95,47): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+D:\Cours\MASTER 2\tetris-bp\GraphicsManager.cpp(159,39): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
   Tetris.vcxproj -> D:\Cours\MASTER 2\tetris-bp\x64\Debug\Tetris.exe

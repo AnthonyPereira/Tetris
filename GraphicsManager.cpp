@@ -13,13 +13,24 @@ using namespace std;
 GraphicsManager::GraphicsManager() {
     tetromino = new Block();
     blockplateau = new Block();
-
+    Delta = 0;
 };
 
 
-int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::Time time,vector<int> destroyed) {
+int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::Time time) {
     window->clear();
     window->draw(background);
+    
+    sf::RectangleShape test(sf::Vector2f(320, 32));
+    if (Delta >= 0.3) {
+        spitfire.move(sf::Vector2f(2, -0.3));       
+        Delta = 0;
+    }
+    if (spitfire.getPosition().x > 1500) {
+        spitfire.setPosition(-100, 50);
+    }
+    window->draw(spitfire);
+
     window->draw(*plate);
     tetromino->setX(mManager->currentPiece->mid);
     tetromino->changeTexture(mManager->currentPiece->color);
@@ -40,21 +51,20 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::T
         for (int y = 0; y < mManager->plateau->nbCol; ++y) {
             ghostrec.setPosition(sf::Vector2f(512 + y * Block::TEXTURE_SIZE, 50 + i * Block::TEXTURE_SIZE));
             window->draw(ghostrec);
-            
         }
     }
 
-    sf::Text text;
     sf::Font font;
     if (!font.loadFromFile("Font/stocky.ttf"))
     {
         return 0;
     }
+    sf::Text text("Score " + to_string(mManager->points),font,40);
 
-    text.setFont(font);
-    text.setString("Score : "+to_string(mManager->points));
+
+    text.setOutlineColor(sf::Color::Black);
+    text.setOutlineThickness(1);
     text.setPosition(250, 600);
-    text.setCharacterSize(40);
     window->draw(text);
     text.setString(to_string(mManager->level));
     text.setPosition(250, 500);
@@ -75,16 +85,14 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::T
 
     Piece ghostpiece = *mManager->currentPiece;
     while (down(mManager->plateau,&ghostpiece))
-    {
         ghostpiece.goDown();
-    }
+    
     
     ghostrec.setFillColor(sf::Color::Transparent );
     ghostrec.setOutlineThickness(1);
 
     for (int* i : ghostpiece.compoPiece) {
         ghostrec.setPosition(sf::Vector2f(512 + i[0] * Block::TEXTURE_SIZE, 50 + (i[1] * Block::TEXTURE_SIZE)));
-        
         window->draw(ghostrec);
     }
 
@@ -114,7 +122,7 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::T
 int GraphicsManager::RenderMenu(sf::RenderWindow* window,sf::Clock &c,int& menubutton) {
     sf::Text text;
     sf::Font font;
-    vector<string> list = { "Jouer à Tetris","Jouer à Tetris 1942","Quitter" };
+    vector<string> list = { "Jouer Tetris","Jouer Tetris 1942","Quitter" };
 
     if (!font.loadFromFile("Font/stocky.ttf"))
     {
@@ -124,21 +132,38 @@ int GraphicsManager::RenderMenu(sf::RenderWindow* window,sf::Clock &c,int& menub
     window->clear();    
     window->draw(background);
 
-    text.setCharacterSize(50);     
     sf::Color color(100, 100, 100,150);
     text.setFont(font);
+    text.setFillColor(sf::Color::White);
+    text.setOutlineColor(sf::Color::Black);
+    text.setOutlineThickness(1);
+
+    if (menubutton == 1) {
+        text.setString("Les dynamites et barils radioactifs, offrent des bonus!!");
+        text.setPosition(340, 420);
+        text.setCharacterSize(20);
+
+        window->draw(text);
+
+    }
+
+    
 
     for (int i = 0; i < 3; ++i) {
-        text.setString(list[i]);
-        text.setPosition(400,i*100+200);
+        
         text.setFillColor(sf::Color::White);
+        
+        text.setCharacterSize(50);
 
+        text.setString(list[i]);
+        text.setPosition(350, i * 150 + 180);
         if (i == menubutton && c.getElapsedTime().asMilliseconds() < 500) {
                 text.setFillColor(color);
         }
         else {
         }
         window->draw(text);
+        
     }
     
 

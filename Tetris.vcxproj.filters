@@ -44,6 +44,12 @@
     <Image Include="Img\TextureTetris.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
+    <Image Include="Img\Background.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Img\spitfire.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h">

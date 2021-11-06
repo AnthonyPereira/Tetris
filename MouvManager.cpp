@@ -1,6 +1,5 @@
 #include "MouvManager.h"
 
-
 using namespace std;
 
 

@@ -14,16 +14,18 @@ void jeu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, Even
     {
         eManager.analyseEvent(&event, &mManager, &window);
     }
-
-    vector<int> destroyed;
+    gManager.Render(&window, &mManager, c.getElapsedTime());
+    if (time.asSeconds() > 0.2) {
+        gManager.destroyed.clear();
+    }
+    gManager.Delta += time.asMilliseconds() * mManager.speed;
 
     if (time.asSeconds() > mManager.delta ) {
         c.restart();
-        destroyed=mManager.goDown();
-    }   
-    gManager.Render(&window, &mManager, c.getElapsedTime(),destroyed);
-
-
+        gManager.destroyed=mManager.goDown();
+    } 
+    
+    
 
 }
 
@@ -52,20 +54,26 @@ int main(){
     EventsManager eManager;
     MouvManager mManager(5,20,10,1);
     
-    sf::Texture texture,background;
+    sf::Texture texture,background,spitfire;
     if (!background.loadFromFile("Img/Background.png"))
         return -1;
     if (!texture.loadFromFile("Img/TextureTetris.png"))
         return -1;
+    if (!spitfire.loadFromFile("Img/spitfire.png"))
+        return -1;
+    gManager.spitfire.setTexture(spitfire);
+    gManager.spitfire.setScale(sf::Vector2f(0.3, 0.3));
+    gManager.spitfire.setPosition(-100, 50);
 
     gManager.background.setTexture(background);
+    gManager.blockplateau->sprite.setTexture(texture);
+    gManager.tetromino->sprite.setTexture(texture);
     gManager.background.setScale(sf::Vector2f(0.5,0.5));
     sf::RectangleShape r(sf::Vector2f(320, 672));
     r.setFillColor(sf::Color(100, 100, 100,150));
     r.setPosition(512, 20);
     gManager.plate = &r;
-    gManager.blockplateau->sprite.setTexture(texture);
-    gManager.tetromino->sprite.setTexture(texture);
+    
     sf::Clock c;
     int gameStatus(0);
     int menubutton(0);

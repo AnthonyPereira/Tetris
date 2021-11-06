@@ -172,6 +172,8 @@
     <ClCompile Include="Plateau.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Img\Background.png" />
+    <Image Include="Img\spitfire.png" />
     <Image Include="Img\TextureTetris.png">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
