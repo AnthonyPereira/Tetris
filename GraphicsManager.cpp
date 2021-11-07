@@ -59,7 +59,7 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::T
     {
         return 0;
     }
-    sf::Text text("Score " + to_string(mManager->points),font,40);
+    sf::Text text("Score " + to_string(mManager->points),font,30);
 
 
     text.setOutlineColor(sf::Color::Black);
@@ -119,7 +119,7 @@ int GraphicsManager::Render(sf::RenderWindow* window,MouvManager* mManager,sf::T
     return 1;
 };
 
-int GraphicsManager::RenderMenu(sf::RenderWindow* window,sf::Clock &c,int& menubutton) {
+int GraphicsManager::RenderMenu(sf::RenderWindow* window,MouvManager &mManager,sf::Clock &c,int& menubutton) {
     sf::Text text;
     sf::Font font;
     vector<string> list = { "Jouer Tetris","Jouer Tetris 1942","Quitter" };
@@ -160,12 +160,21 @@ int GraphicsManager::RenderMenu(sf::RenderWindow* window,sf::Clock &c,int& menub
         if (i == menubutton && c.getElapsedTime().asMilliseconds() < 500) {
                 text.setFillColor(color);
         }
-        else {
-        }
         window->draw(text);
         
     }
+    text.setFillColor(sf::Color::White);
+
+    if (mManager.maxScore != 0) {
+        text.setPosition(750, 300);
+        text.setCharacterSize(50);
+
+        text.setRotation(20);
+        text.setString(to_string(mManager.maxScore));
+        window->draw(text);
+    }
     
+
 
     
     window->display();

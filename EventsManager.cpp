@@ -6,7 +6,7 @@
 
 
 
-void EventsManager::analyseEvent(sf::Event* event,MouvManager* mManager, sf::RenderWindow* window) {
+void EventsManager::analyseEvent(sf::Event* event,MouvManager* mManager, sf::RenderWindow* window, int *pause) {
     switch (event->type)
     {
 
@@ -45,10 +45,12 @@ void EventsManager::analyseEvent(sf::Event* event,MouvManager* mManager, sf::Ren
             case sf::Keyboard::Down:
                 mManager->goDown();
                 break;
+            case sf::Keyboard::P:
+                *pause = *pause * -1;
+                break;
             case sf::Keyboard::Space:
                 while (down(mManager->plateau, mManager->currentPiece))
                     mManager->goDown();
-                
                 break;
             default:
                 break;

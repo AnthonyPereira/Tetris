@@ -6,30 +6,38 @@
 
 using namespace std;
 
-void jeu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, EventsManager& eManager, MouvManager& mManager) {
+void jeu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, EventsManager& eManager, MouvManager& mManager,int &pause) {
     sf::Event event;
     sf::Time time = c.getElapsedTime();
-
+    
     while (window.pollEvent(event))
     {
-        eManager.analyseEvent(&event, &mManager, &window);
+        eManager.analyseEvent(&event, &mManager, &window,&pause);
     }
-    gManager.Render(&window, &mManager, c.getElapsedTime());
-    if (time.asSeconds() > 0.2) {
-        gManager.destroyed.clear();
-    }
-    gManager.Delta += time.asMilliseconds() * mManager.speed;
-
-    if (time.asSeconds() > mManager.delta ) {
-        c.restart();
-        gManager.destroyed=mManager.goDown();
-    } 
     
+    if (pause == 1) {  
+        gManager.Render(&window, &mManager, c.getElapsedTime());
+
+        if (time.asSeconds() > 0.2) {
+            gManager.destroyed.clear();
+        }
+        gManager.Delta += time.asMilliseconds() * mManager.speed;
+
+        if (time.asSeconds() > mManager.delta ) {
+            c.restart();
+            gManager.destroyed=mManager.goDown();
+        } 
+    }
+    else {
+        c.restart();
+
+    }
+
     
 
 }
 
-void menu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, EventsManager& eManager, int& gamestatus, int& menubutton) {
+void menu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, EventsManager& eManager, MouvManager& mManager, int& gamestatus, int& menubutton) {
     sf::Event event;
     sf::Time time = c.getElapsedTime();
 
@@ -43,7 +51,7 @@ void menu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, Eve
     }
 
 
-    gManager.RenderMenu(&window,c,menubutton);
+    gManager.RenderMenu(&window,mManager,c,menubutton);
 }
 
 int main(){
@@ -77,11 +85,11 @@ int main(){
     sf::Clock c;
     int gameStatus(0);
     int menubutton(0);
-
+    int pause = 1;
     while (window.isOpen())
     {   
         if (gameStatus==1 || gameStatus == 2) {
-            jeu(window, c, gManager, eManager, mManager);
+            jeu(window, c, gManager, eManager, mManager,pause);
             if (mManager.verifLose()) {
                 gameStatus = 0;
                 mManager.resetGame(5,20,10);
@@ -91,7 +99,7 @@ int main(){
             window.close();
         }
         else {        
-            menu(window, c, gManager, eManager, gameStatus,menubutton);
+            menu(window, c, gManager, eManager,mManager, gameStatus,menubutton);
             mManager.mod = menubutton;
         }
     }

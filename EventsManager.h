@@ -7,7 +7,7 @@ class EventsManager
 {
 public:
 	
-	void analyseEvent(sf::Event* event, MouvManager* mManager, sf::RenderWindow* window);
+	void analyseEvent(sf::Event* event, MouvManager* mManager, sf::RenderWindow* window, int* pause);
 	/*Analyse des events du jeu*/
 	void MenuEvent(sf::Event* event, sf::RenderWindow* window, int& gamestatus, int& menubutton);
 	/*Analyse des events du menu*/

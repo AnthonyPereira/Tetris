@@ -13,7 +13,7 @@ class GraphicsManager
 
 		int Render(sf::RenderWindow* window, MouvManager* mManager, sf::Time time);
 		/*Rendu du jeu */
-		int RenderMenu(sf::RenderWindow* window, sf::Clock& c,int& menubutton);
+		int RenderMenu(sf::RenderWindow* window,MouvManager& mManager, sf::Clock& c,int& menubutton);
 		/*Rendu du Menu*/
 
 		Block* tetromino;
