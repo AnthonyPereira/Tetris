@@ -166,16 +166,13 @@ int GraphicsManager::RenderMenu(sf::RenderWindow* window,MouvManager &mManager,s
     text.setFillColor(sf::Color::White);
 
     if (mManager.maxScore != 0) {
-        text.setPosition(750, 300);
-        text.setCharacterSize(50);
+        text.setPosition(800, 200);
+        text.setCharacterSize(20);
 
         text.setRotation(20);
-        text.setString(to_string(mManager.maxScore));
+        text.setString("Meilleur Score "+to_string(mManager.maxScore));
         window->draw(text);
     }
-    
-
-
     
     window->display();
     return 1;
