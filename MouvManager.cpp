@@ -128,11 +128,9 @@ void MouvManager::turnLeft(){
 
 bool MouvManager::verifLose(){
 	if (!verifIntegrity(plateau, currentPiece)) {
-		cout << maxScore << endl;
 		if (points > maxScore) {
 			maxScore = points;
 		}
-		cout << maxScore << endl;
 		fstream f;
 		f.open("data/score.bin");
 		f.write((char*)&maxScore, sizeof(maxScore));
