@@ -22,6 +22,13 @@ MouvManager::MouvManager(int mid, int line, int col, int mod){
 	points = 0;
 	level = 0;
 	
+	fstream f;
+	f.open("data/score.bin");
+	f.read((char*) &maxScore, sizeof(maxScore));
+	if (f.fail()) {
+		maxScore = 0;
+	}
+	f.close();
 }
 
 
@@ -120,7 +127,19 @@ void MouvManager::turnLeft(){
 }
 
 bool MouvManager::verifLose(){
-	return !verifIntegrity(plateau, currentPiece);
+	if (!verifIntegrity(plateau, currentPiece)) {
+		cout << maxScore << endl;
+		if (points > maxScore) {
+			maxScore = points;
+		}
+		cout << maxScore << endl;
+		fstream f;
+		f.open("data/score.bin");
+		f.write((char*)&maxScore, sizeof(maxScore));
+		f.close();
+		return true;
+	}
+	return false;
 }
 
 MouvManager::~MouvManager(){

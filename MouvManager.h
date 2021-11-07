@@ -10,6 +10,7 @@
 #include <iterator>
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -19,6 +20,7 @@ class MouvManager {
 		Piece* nextPiece;	/* la piece qui sera sur le plateau ensuite */
 		Plateau* plateau;
 		int points;
+		int maxScore;
 		double speed;
 		double delta;
 		int mod;
