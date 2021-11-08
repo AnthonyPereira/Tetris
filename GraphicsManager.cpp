@@ -133,7 +133,20 @@ int GraphicsManager::RenderMenu(sf::RenderWindow* window,MouvManager &mManager,s
     window->draw(background);
 
     sf::Color color(100, 100, 100,150);
+
+    sf::RectangleShape r(sf::Vector2f(275, 300));
+    r.setFillColor(color);
+    r.setPosition(40, 120);
+    window->draw(r);
     text.setFont(font);
+    text.setPosition(45, 125);
+    text.setCharacterSize(15);
+    text.setString("   Controles  \n\n QD Gauche droite\n Z Rotation\n S Accelerer\n ESPACE Descendre pièce\n P Pause");
+    window->draw(text);
+
+
+
+
     text.setFillColor(sf::Color::White);
     text.setOutlineColor(sf::Color::Black);
     text.setOutlineThickness(1);

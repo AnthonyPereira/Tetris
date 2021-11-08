@@ -1,4 +1,6 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+
 #include <iostream>
 #include "GraphicsManager.h"
 #include "MouvManager.h"
@@ -69,6 +71,14 @@ int main(){
         return -1;
     if (!spitfire.loadFromFile("Img/spitfire.png"))
         return -1;
+
+    sf::Music music;
+    if (!music.openFromFile("Music/mainmusic.wav"))
+        return -1;
+    music.setLoop(1);
+    music.setVolume(50);
+    music.setPitch(1);
+    
     gManager.spitfire.setTexture(spitfire);
     gManager.spitfire.setScale(sf::Vector2f(0.3, 0.3));
     gManager.spitfire.setPosition(-100, 50);
@@ -89,10 +99,17 @@ int main(){
     while (window.isOpen())
     {   
         if (gameStatus==1 || gameStatus == 2) {
+            if(music.getStatus()!=sf::Music::Status::Playing)
+                music.play();
             jeu(window, c, gManager, eManager, mManager,pause);
             if (mManager.verifLose()) {
                 gameStatus = 0;
                 mManager.resetGame(5,20,10);
+                music.stop();
+            }
+            if (pause != 1) {
+                music.stop();
+
             }
         }
         else if (gameStatus == 3) {
