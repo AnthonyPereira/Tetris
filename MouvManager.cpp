@@ -94,7 +94,7 @@ vector<int> MouvManager::goDown(){
 		points += (1200 * (level+1));
 	}
 	else if (listLineDel.size() >= 20) {
-		points += (2000 * (level+1));
+		points += (3000 * (level+1));
 	}
 	if (points >= 1200 * (level+1)) {
 		++level;

@@ -57,7 +57,7 @@ void menu(sf::RenderWindow& window, sf::Clock& c, GraphicsManager& gManager, Eve
 }
 
 int main(){
-    sf::RenderWindow window(sf::VideoMode(1280, 720), "Tetris 1945");
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Tetris 1942");
     //window.setKeyRepeatEnabled(false);
     window.setFramerateLimit(60);
     GraphicsManager gManager;
@@ -77,7 +77,7 @@ int main(){
         return -1;
     music.setLoop(1);
     music.setVolume(50);
-    music.setPitch(1);
+    music.setPitch(1.1);
     
     gManager.spitfire.setTexture(spitfire);
     gManager.spitfire.setScale(sf::Vector2f(0.3, 0.3));
