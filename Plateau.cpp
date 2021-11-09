@@ -37,6 +37,7 @@ vector<int> Plateau::DelLinePlateau(int mod){
 	for (int i = 0; i < nbLine; ++i) {
 		bool notEmpty = 0;
 		bool same = 1;
+		bool samebutNot = 1;
 		int precColor = plateau[i][0];
 		typeColor = plateau[i][0];
 		for (int j = 0; j < nbCol; ++j) {
@@ -47,10 +48,13 @@ vector<int> Plateau::DelLinePlateau(int mod){
 			if (precColor != plateau[i][j]) {
 				same = 0;
 			}
+			if (plateau[i][j] != 3 && plateau[i][j] != 6) {
+				samebutNot = 0;
+			}
 			notEmpty = 1;
 		}
 		if (notEmpty) {
-			if (plateau[i][0] == 3 && same == 1) {
+			if (mod == 1 && samebutNot == 1) {
 				ret.push_back(i - 1);
 				if (i != nbLine - 1) {
 					ret.push_back(i + 1);
@@ -64,7 +68,7 @@ vector<int> Plateau::DelLinePlateau(int mod){
 				}
 			}
 			for (int j = 0; j < nbCol; ++j) {
-				if (mod == 1 && plateau[i][j] == 3 && same == 1) {
+				if (mod == 1 && samebutNot == 1) {
 					plateau[i - 1][j] = 0;
 					if (i < nbLine-1) {
 						plateau[i + 1][j] = 0;
