@@ -49,8 +49,6 @@ class MouvManager {
 		/* verifie si la partie est perdu ou pas */
 		void generatePiece();
 		/* change la nextPiece par une nouvelle random*/
-		void echangeStock();
-		/* change la piece stock avec la piece actuelle*/
 		~MouvManager();
 		/* détruit toute les objects initialisé en mémoire */
 
