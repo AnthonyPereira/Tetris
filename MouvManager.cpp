@@ -4,18 +4,27 @@ using namespace std;
 
 
 MouvManager::MouvManager(int mid, int line, int col, int mod){
-	allPiece = { 1,2,3,4,5,6,7 };
-	mt19937 g(rd());
-	shuffle(allPiece.begin(), allPiece.end(), g);
+	srand((unsigned int) time(0));
 	currentPiece = new Piece(mid);
 	nextPiece = new Piece(mid);
 	this->mod = mod;
-	precPiece.push_back(allPiece[3]);
-	precPiece.push_back(allPiece[2]);
-	precColor.push_back(allPiece[0]);
-	precColor.push_back(allPiece[6]);
-	currentPiece->replacePiece(allPiece[0], allPiece[3]);
-	nextPiece->replacePiece(allPiece[6], allPiece[2]);
+	int randPiece = rand() % NBPIECE + 1;
+	precPiece.push_back(randPiece);
+	while (precPiece.size() != 2) {
+		randPiece = rand() % NBPIECE + 1;
+		if(find(precPiece.begin(), precPiece.end(), randPiece) == precPiece.end()) {
+			precPiece.push_back(randPiece);
+		}
+	}
+	precColor.push_back(randPiece);
+	while (precColor.size() != 2){
+		randPiece = rand() % NBPIECE + 1;
+		if (find(precColor.begin(), precColor.end(), randPiece) == precColor.end()) {
+			precColor.push_back(randPiece);
+		}
+	}
+	currentPiece->replacePiece(precColor[0], precPiece[0]);
+	nextPiece->replacePiece(precColor[1], precPiece[1]);
 	plateau = new Plateau(line, col);
 	speed = 1.25;
 	delta = 0.8;
@@ -61,23 +70,11 @@ vector<int> MouvManager::goDown(){
 	else {
 		plateau->addPiece(currentPiece);
 		*currentPiece = *nextPiece;
-		mt19937 g(rd());
-		shuffle(allPiece.begin(), allPiece.end(), g);
 		if (precPiece.size() == 3) {
 			precPiece.erase(precPiece.begin());
 			precColor.erase(precColor.begin());
 		}
-		int i = 0;
-		int j = 0;
-		while (find(precPiece.begin(), precPiece.end(), allPiece[i]) != precPiece.end()) {
-			++i;
-		}
-		precPiece.push_back(allPiece[i]);
-		while (find(precColor.begin(), precColor.end(), allPiece[j]) != precColor.end()) {
-			++j;
-		}
-		precColor.push_back(allPiece[j]);
-		nextPiece->replacePiece(allPiece[j], allPiece[i]);
+		generatePiece();
 		
 	}
 	vector<int> listLineDel = plateau->DelLinePlateau(mod);
@@ -138,6 +135,23 @@ bool MouvManager::verifLose(){
 		return true;
 	}
 	return false;
+}
+
+void MouvManager::generatePiece(){
+	int randPiece;
+	while (precPiece.size() != 3) {
+		randPiece = rand() % NBPIECE + 1;
+		if (find(precPiece.begin(), precPiece.end(), randPiece) == precPiece.end()) {
+			precPiece.push_back(randPiece);
+		}
+	}
+	while (precColor.size() != 3) {
+		randPiece = rand() % NBPIECE + 1;
+		if (find(precColor.begin(), precColor.end(), randPiece) == precColor.end()) {
+			precColor.push_back(randPiece);
+		}
+	}
+	nextPiece->replacePiece(precColor[2], precPiece[2]);
 }
 
 MouvManager::~MouvManager(){

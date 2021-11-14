@@ -2,6 +2,19 @@
 
 #include <vector>
 
+#define PIECE11 1
+#define PIECE12 1
+#define PIECE13 0
+#define PIECE31 0
+#define PIECE32 0
+#define PIECE33 0
+#define PIECE2471 0
+#define PIECE2472 1
+#define PIECE2473 0
+#define PIECE561 0
+#define PIECE562 1
+#define PIECE563 1
+
 class Piece {
 
 public:

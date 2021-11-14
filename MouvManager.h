@@ -12,6 +12,8 @@
 #include <vector>
 #include <fstream>
 
+#define NBPIECE 7
+
 using namespace std;
 
 class MouvManager {
@@ -24,10 +26,8 @@ class MouvManager {
 		double speed;
 		double delta;
 		int mod;
-		vector<int> allPiece;
 		vector<int> precPiece;
 		vector<int> precColor;
-		random_device rd;
 		int level;
 
 
@@ -47,6 +47,10 @@ class MouvManager {
 		/* appelle la (currentPiece) pour lui dire de tourner a gauche de 1*/
 		bool verifLose();
 		/* verifie si la partie est perdu ou pas */
+		void generatePiece();
+		/* change la nextPiece par une nouvelle random*/
+		void echangeStock();
+		/* change la piece stock avec la piece actuelle*/
 		~MouvManager();
 		/* détruit toute les objects initialisé en mémoire */
 
